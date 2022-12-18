@@ -1,8 +1,8 @@
 <?php
 
 $db_host = 'localhost';
-$db_name = 'mfee30';
-// $db_name = 'circular-journeys';
+$db_name = 'circular_journeys';
+
 $db_user = 'root';
 $db_pass = '';
 
