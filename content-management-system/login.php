@@ -50,7 +50,7 @@ $pageName = 'login';
                 console.log(data);
                 if (data.success) {
                     // alert('成功登入');
-                    location.href = 'index_.php';
+                    location.href = './marketplace-page/list-admin.php';
                 } else {
                     alert(data.error);
                 }

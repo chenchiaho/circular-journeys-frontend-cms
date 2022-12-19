@@ -35,7 +35,7 @@
                             商城系統
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="../marketplace-page/list.php">產品新增修改</a></li>
+                            <li><a class="dropdown-item" href="./../marketplace-page/list.php">產品新增修改</a></li>
                             <li><a class="dropdown-item" href="#">購物車管理</a></li>
                             <li><a class="dropdown-item" href="#">庫存管理</a></li>
                         </ul>
