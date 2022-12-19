@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2022 at 06:43 PM
+-- Generation Time: Dec 19, 2022 at 10:38 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -32,6 +32,16 @@ CREATE TABLE `admins` (
   `account_id` varchar(255) NOT NULL,
   `password_hash` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`sid`, `account_id`, `password_hash`) VALUES
+(2, 'kevinLa', '$2y$10$uS4kY1gRTYj02v12uvr/SeL1HYqnLEoTdzJpM/u7V8LW4nKlthkSq'),
+(3, 'Anchor', '$2y$10$8ygdQqqGJ7mQSzE7FEoXk./N0G6XGJbYJcjPzTsxOYXQV1t3OWmsC'),
+(4, 'Circle', '$2y$10$lxNFSJhX8YZnuSzwm8pEIOjlH166vq0b8XqUsQFTpVxY.VHyif2mq'),
+(5, 'Alan', '$2y$10$m7ScZmsTplvDxbxRkYxdmunfJHbZ7F04PAUBWOBL9djX5BH.6/M0.');
 
 -- --------------------------------------------------------
 
@@ -95,6 +105,7 @@ CREATE TABLE `product_inventories` (
 --
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`sid`),
+  ADD UNIQUE KEY `account_id_2` (`account_id`),
   ADD KEY `account_id` (`account_id`);
 
 --
@@ -125,7 +136,7 @@ ALTER TABLE `product_inventories`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `products`
