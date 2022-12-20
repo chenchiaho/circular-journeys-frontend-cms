@@ -68,50 +68,51 @@ if (!empty($totalRows)) {
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Desc</th>
-                        <th scope="col">img</th>
-                        <th scope="col">price</th>
-                        <th scope="col">created</th>
-                        <th scope="col">created</th>
-                        <th scope="col">deleted</th>
-                        <th scope="col">cate_id</th>
-                        <th scope="col">inve_id</th>
-                        <th scope="col">status</th>
+
+                        <th scope="col">ID</th>
+                        <th scope="col">商品圖</th>
+                        <th scope="col">商品名稱</th>
+                        <th scope="col">商品敘述</th>
+                        <th scope="col">價格</th>
+                        <th scope="col">庫存</th>
+                        <th scope="col">分類</th>
+                        <th scope="col">商品狀態</th>
+                        <th scope="col">創建日期</th>
+                        <th scope="col">更新日期</th>
+                        <th scope="col"><i class="fa-solid fa-plus"></i></th>
                         <th scope="col"><i class="fa-solid fa-file-pen"></i></th>
+                        <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($rows as $r) : ?>
                         <tr>
-                            <td>
-                                <?php /*
-                <a href="delete.php?sid=<?= $r['sid'] ?>"
-                  onclick="return confirm('確定要刪除這筆資料嗎?')"
-                >
-                  <i class="fa-solid fa-trash-can"></i>
-                </a>
-              */ ?>
 
+                            <td><?= $r['id'] ?></td>
+                            <td><?= $r['image'] ?></td>
+                            <td><?= $r['name'] ?></td>
+                            <td><?= $r['description'] ?></td>
+                            <td><?= $r['price'] ?></td>
+                            <td><?= $r['inventory_id'] ?></td>
+                            <td><?= $r['category_id'] ?></td>
+                            <td><?= $r['active_status'] ?></td>
+                            <td><?= $r['created_at'] ?></td>
+                            <td><?= $r['modified_at'] ?></td>
+                            <td>
+
+                                <a href="add.php">
+                                    <i class="fa-solid fa-plus"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="edit.php?id=<?= $r['id'] ?>">
+                                    <i class="fa-solid fa-file-pen"></i>
+                                </a>
+                            </td>
+                            <td>
                                 <a href="javascript: delete_it(<?= $r['id'] ?>)">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </a>
-                            </td>
-                            <td><?= $r['id'] ?></td>
-                            <td><?= $r['name'] ?></td>
-                            <td><?= $r['description'] ?></td>
-                            <td><?= $r['image'] ?></td>
-                            <td><?= $r['price'] ?></td>
-                            <td><?= $r['created_at'] ?></td>
-                            <td><?= $r['deleted_at'] ?></td>
-                            <td><?= $r['category_id'] ?></td>
-                            <td><?= $r['inventory_id'] ?></td>
-                            <td><?= $r['active_status'] ?></td>
-                            <a href="edit.php?id=<?= $r['id'] ?>">
-                                <i class="fa-solid fa-file-pen"></i>
-                            </a>
                             </td>
                         </tr>
                     <?php endforeach ?>
