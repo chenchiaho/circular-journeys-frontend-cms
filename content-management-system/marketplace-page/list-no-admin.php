@@ -1,7 +1,7 @@
 <?php
 require '../parts/connect_db.php';
 $pageName = 'list';
-$title = "商品列表";
+$title = "商品列表2";
 
 $perPage = 20;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;

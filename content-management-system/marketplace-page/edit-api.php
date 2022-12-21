@@ -1,6 +1,6 @@
 <?php
 require './admin-required-api.php';
-require './parts/connect_db.php';
+require '../parts/connect_db.php';
 header('Content-Type: application/json');
 
 $output = [
@@ -10,75 +10,47 @@ $output = [
     'errors' => []
 ];
 
-if (empty($_POST['sid'])) {
-    $output['errors']['sid'] = '沒有資料編號';
-    echo json_encode($output, JSON_UNESCAPED_UNICODE);
-    exit;
-}
 
-if (empty($_POST['name'])) {
-    $output['errors']['name'] = '沒有姓名資料';
-    echo json_encode($output, JSON_UNESCAPED_UNICODE);
-    exit;
-}
-
-// TODO: 欄位資料檢查
-
-$isPass = true; // 是否通過檢查
-
-$sid = intval($_POST['sid']);
+$sid = intval($_POST['id']);
 
 $name = $_POST['name'] ?? '';
-$email = $_POST['email'] ?? '';
-$mobile = $_POST['mobile'] ?? '';
-$birthday = $_POST['birthday'] ?? '';
-$address = $_POST['address'] ?? '';
+$description = $_POST['description'] ?? '';
+$price = $_POST['price'] ?? '';
+$modified_at = $_POST['modified_at'] ?? '';
+$inventory = $_POST['inventory'] ?? '';
+$category = $_POST['category'] ?? '';
+$product_img = $_POST['product_img'] ?? '';
+$active_status = $_POST['active_status'] ?? '';
 
 
 
-if (mb_strlen($name) < 2) {
-    $output['errors']['name'] = '請填寫正確的姓名';
-    $isPass = false;
-}
-
-if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-    $output['errors']['email'] = '請填寫正確的 email';
-    $isPass = false;
-}
-
-
-$sql = "UPDATE `address_book` SET
+$sql = "UPDATE `products` SET
 `name`=?,
-`email`=?,
-`mobile`=?,
-`birthday`=?,
-`address`=?
-WHERE `sid`=?";
+`description`=?,
+`image`=?,
+`price`=?,
+`modified_at`= NOW()
+`category_id`=?
+`inventory_id`=?
+`active_status`=?
+WHERE `id`=?";
 
 $stmt = $pdo->prepare($sql);
 
+$stmt->execute([
+    $name,
+    $description,
+    $product_img,
+    $price,
+    $modified_at,
+    $inventory,
+    $category,
 
-if (!empty($_POST['birthday'])) {
-    $t = strtotime($_POST['birthday']);
-    if ($t !== false) {
-        $birthday = date('Y-m-d', $t);
-    }
-}
-if (empty($birthday)) {
-    $birthday = null;
-}
-if ($isPass) {
-    $stmt->execute([
-        $name,
-        $email,
-        $mobile,
-        $birthday,
-        $address,
-        $sid
-    ]);
+    $active_status
+]);
 
-    $output['success'] = !!$stmt->rowCount();
-}
+$output['success'] = !!$stmt->rowCount();
+
 
 
 echo json_encode($output, JSON_UNESCAPED_UNICODE);

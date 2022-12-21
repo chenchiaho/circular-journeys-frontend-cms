@@ -11,8 +11,6 @@ $output = [
 ];
 
 
-// TODO: 欄位資料檢查
-
 $name = $_POST['name'] ?? '';
 $description = $_POST['description'] ?? '';
 $price = $_POST['price'] ?? '';
