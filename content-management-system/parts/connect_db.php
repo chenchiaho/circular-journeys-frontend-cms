@@ -16,3 +16,8 @@ $pdo_options = [
 ];
 
 $pdo = new PDO($dsn, $db_user, $db_pass, $pdo_options);
+
+if(! isset($_SESSION)){
+    session_start();
+  }
+  
