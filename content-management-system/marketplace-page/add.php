@@ -52,7 +52,7 @@ $title = "新增商品";
                         </div>
 
                         <div>
-                            <p>是否上架</p>
+                            <p>是否上架?</p>
                             <label for="published">是</label>
                             <input type="radio" id="published" name="active_status" value="1">
 

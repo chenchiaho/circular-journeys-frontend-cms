@@ -16,11 +16,11 @@ $sid = intval($_POST['id']);
 $name = $_POST['name'] ?? '';
 $description = $_POST['description'] ?? '';
 $price = $_POST['price'] ?? '';
-$modified_at = $_POST['modified_at'] ?? '';
+$modified_at = '';
 $inventory = $_POST['inventory'] ?? '';
 $category = $_POST['category'] ?? '';
 $product_img = $_POST['product_img'] ?? '';
-$active_status = $_POST['active_status'] ?? '';
+// $active_status = $_POST['active_status'] ?? '';
 
 
 
@@ -29,10 +29,10 @@ $sql = "UPDATE `products` SET
 `description`=?,
 `image`=?,
 `price`=?,
-`modified_at`= NOW()
-`category_id`=?
+`modified_at`= NOW(),
+`category_id`=?,
 `inventory_id`=?
-`active_status`=?
+-- `active_status`=?
 WHERE `id`=?";
 
 $stmt = $pdo->prepare($sql);
@@ -42,11 +42,10 @@ $stmt->execute([
     $description,
     $product_img,
     $price,
-    $modified_at,
-    $inventory,
     $category,
-
-    $active_status
+    $inventory,
+    // $active_status,
+    $sid
 ]);
 
 $output['success'] = !!$stmt->rowCount();
