@@ -92,7 +92,7 @@ if (!empty($totalRows)) {
                             <td><?= $r['modified_at'] ?></td>
 
                             <td>
-                                <a href="edit.php?id=<?= $r['id'] ?>">
+                                <a href="edit-orders.php?id=<?= $r['id'] ?>">
                                     <i class="fa-solid fa-file-pen"></i>
                                 </a>
                             </td>
@@ -114,7 +114,7 @@ if (!empty($totalRows)) {
 <script>
     function delete_it(id) {
         if (confirm(`確定要刪除編號為 ${id} 的資料嗎?`)) {
-            location.href = `delete.php?id=${id}`;
+            location.href = `delete-orders.php?id=${id}`;
         }
     }
 </script>

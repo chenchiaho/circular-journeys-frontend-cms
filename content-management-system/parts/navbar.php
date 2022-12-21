@@ -5,7 +5,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Background-system</a>
+            <a class="navbar-brand" href="#">Content Management System</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -35,7 +35,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="./../marketplace-page/list.php">產品新增修改</a></li>
-                            <li><a class="dropdown-item" href="./../marketplace-page/product-mgmt/order-list.php">訂單管理</a></li>
+                            <li><a class="dropdown-item" href="./../marketplace-page/order-mgmt/order-list.php">訂單管理</a></li>
 
                         </ul>
                     </li>
