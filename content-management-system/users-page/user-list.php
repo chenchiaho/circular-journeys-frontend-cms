@@ -6,42 +6,22 @@ $title = "資料列表";
 $sql = "SELECT * FROM users_information ORDER BY id ASC ";
 $rows = $pdo->query($sql)->fetchAll();
 
-// 讀取查詢結果
-// while ($rows) {
-//   echo $rows['id'] . " ";
-//   echo $rows['member_id'] . " ";
-//   echo $rows['created_at'] . " ";
-//   echo $rows['active_status'] . " ";
-//   echo $rows['first_name'] . " ";
-//   echo $rows['last_name'] . " ";
-//   echo $rows['sex'] . " ";
-//   echo $rows['password'] . " ";
-//   echo $rows['token'] . " ";
-//   echo $rows['email'] . " ";
-//   echo $rows['telephone'] . " ";
-//   echo $rows['country'] . " ";
-//   echo $rows['city'] . " ";
-//   echo $rows['postal_code'] . " ";
-//   echo $rows['address'] . " ";
-//   echo $rows['payment_type'] . " ";
-//   echo $rows['provider'] . " ";
-//   echo $rows['account_no'] . " ";
-//   echo $rows['expiry'] . "<br>";
-// }
-// ;
 
 $pdo = null;
 
 ?>
 
 <?php include '../parts/html-head.php' ?>
+<?php include '../parts/navbar.php' ?>
 
 
 <body>
-  <div class="container">
-    <table id="myTable" class="table table-hover table-success display">
-      <thead>
+  <div class="table-responsive" style="margin-top: 150px;">
+    <table id="myTable"
+      class="table table-hover table-success display table-bordered align-middle text-center text-nowrap ">
+      <thead class="align-middle">
         <tr>
+          <th scope="col">操作</th>
           <th scope="col">ID</th>
           <th scope="col">會員編號</th>
           <th scope="col">註冊日期</th>
@@ -63,9 +43,17 @@ $pdo = null;
           <th scope="col">到期日</th>
         </tr>
       </thead>
-      <tbody class="table-light">
+      <tbody class="table-light ">
         <?php foreach ($rows as $r): ?>
         <tr>
+          <td scope="row">
+            <a class="text-decoration-none" href="../users-page/edit.php">
+              <i class="fa-solid fa-file-pen"></i>
+            </a>
+            <a class="text-decoration-none" href="javascript: delete_it(<?= $r['id'] ?>)">
+              <i class="fa-solid fa-trash-can"></i>
+            </a>
+          </td>
           <td><?= $r['id'] ?></td>
           <td><?= $r['member_id'] ?></td>
           <td><?= $r['created_at'] ?></td>
@@ -91,6 +79,13 @@ $pdo = null;
     </table>
   </div>
 </body>
+<script>
+  function delete_it(id) {
+    if (confirm(`確認是否刪除 ID: ${id} 的會員資料嗎?`)) {
+      location.href = `delete.php?sid=${id}`;
+    }
+  }
 
+</script>
 <?php include '../parts/scripts.php' ?>
 <?php include '../parts/html-foot.php' ?>
