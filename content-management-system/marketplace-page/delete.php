@@ -1,15 +1,15 @@
 <?php
 require './admin-required.php';
-require './parts/connect_db.php';
+require '../parts/connect_db.php';
 
-$sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
+$sid = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if (empty($sid)) {
     header('Location: list.php');
     exit;
 }
 
-$sql = "DELETE FROM `address_book` WHERE sid=$sid";
+$sql = "DELETE FROM `products` WHERE id=$sid";
 $pdo->query($sql);
 
 if (empty($_SERVER['HTTP_REFERER'])) {

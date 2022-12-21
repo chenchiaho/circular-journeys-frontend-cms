@@ -36,8 +36,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="./../marketplace-page/list.php">產品新增修改</a></li>
-                            <li><a class="dropdown-item" href="#">購物車管理</a></li>
-                            <li><a class="dropdown-item" href="#">庫存管理</a></li>
+                            <li><a class="dropdown-item" href="#">訂單管理</a></li>
+
                         </ul>
                     </li>
                 </ul>
@@ -54,9 +54,7 @@
                         <li class="nav-item">
                             <a class="nav-link <?= $pageName == 'login' ? 'active' : '' ?>" href="../login.php">登入</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#沒有實作">註冊</a>
-                        </li>
+
                     <?php endif ?>
 
 
