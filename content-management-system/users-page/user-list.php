@@ -84,7 +84,7 @@ $pdo = null;
     if (confirm(`確認是否刪除 ID: ${id} 的會員資料嗎?`)) {
       location.href = `delete.php?sid=${id}`;
     }
-  }
+  };
 
 </script>
 <?php include '../parts/scripts.php' ?>
