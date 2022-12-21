@@ -16,9 +16,8 @@
                             會員管理
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">新增修改</a></li>
+                            <li><a class="dropdown-item" href="#">管理清冊</a></li>
                             <li><a class="dropdown-item" href="#">註冊驗證</a></li>
-                            <li><a class="dropdown-item" href="#">管理名單</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
