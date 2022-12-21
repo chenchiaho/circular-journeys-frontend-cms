@@ -1,16 +1,16 @@
 <?php
 require './admin-required.php';
-require './parts/connect_db.php';
-$title = "修改資料";
+require '../parts/connect_db.php';
+$title = "商品資訊修改";
 
-$sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-if (empty($sid)) {
+if (empty($id)) {
     header('Location: list.php');
     exit;
 }
 
-$sql = "SELECT * FROM address_book WHERE sid=$sid";
+$sql = "SELECT * FROM products WHERE id=$id";
 
 $r = $pdo->query($sql)->fetch();
 if (empty($r)) {
@@ -19,58 +19,59 @@ if (empty($r)) {
     exit;
 }
 
-# echo json_encode($r, JSON_UNESCAPED_UNICODE);
 ?>
-<?php include './parts/html-head.php' ?>
-<?php include './parts/navbar.php' ?>
+
+<?php include '../parts/html-head.php' ?>
+<?php include '../parts/navbar.php' ?>
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">修改資料</h5>
+                    <h5 class="card-title">商品資訊修改</h5>
                     <form name="form1" onsubmit="checkForm(event)" novalidate>
-                        <input type="hidden" name="sid" value="<?= $r['sid'] ?>">
+                        <input type="hidden" name="id" value="<?= $r['id'] ?>">
                         <div class="mb-3">
-                            <label for="name" class="form-label">name</label>
+                            <label for="name" class="form-label">商品名稱</label>
                             <input type="text" class="form-control" id="name" name="name" value="<?= htmlentities($r['name']) ?>" required>
                             <div class="form-text"></div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="email" class="form-label">email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="<?= $r['email'] ?>">
+                            <label for="description" class="form-label">商品敘述</label>
+                            <textarea type="description" class="form-control" id="description" name="description" cols="20" rows="2" value="<?= $r['description'] ?>"></textarea>
                             <div class="form-text"></div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="mobile" class="form-label">mobile</label>
-                            <input type="number" class="form-control" id="mobile" name="mobile" value="<?= $r['mobile'] ?>" pattern="09\d{2}-?\d{3}-?\d{3}">
-                            <div class="form-text"></div>
+                            <label for="price" class="form-label">價格</label>
+                            <input type="number" class="form-control" id="price" name="price" value="<?= $r['price'] ?> >
+                            <div class=" form-text">
                         </div>
-
-                        <div class="mb-3">
-                            <label for="birthday" class="form-label">birthday</label>
-                            <input type="date" class="form-control" id="birthday" name="birthday" value="<?= $r['birthday'] ?>">
-                            <div class="form-text"></div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="address" class="form-label">address</label>
-
-                            <textarea class="form-control" name="address" id="address" cols="30" rows="3"><?= htmlentities($r['address']) ?></textarea>
-                            <div class="form-text"></div>
-                        </div>
-
-
-                        <button type="submit" class="btn btn-primary">修改</button>
-                    </form>
-
                 </div>
-            </div>
 
+                <div class="mb-3">
+                    <label for="birthday" class="form-label">birthday</label>
+                    <input type="date" class="form-control" id="birthday" name="birthday" value="<?= $r['birthday'] ?>">
+                    <div class="form-text"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address" class="form-label">address</label>
+
+                    <textarea class="form-control" name="address" id="address" cols="30" rows="3"><?= htmlentities($r['address']) ?></textarea>
+                    <div class="form-text"></div>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">修改</button>
+                </form>
+
+            </div>
         </div>
+
     </div>
+</div>
 
 
 
