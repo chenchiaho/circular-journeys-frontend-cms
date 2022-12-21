@@ -36,7 +36,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="./../marketplace-page/list.php">產品新增修改</a></li>
-                            <li><a class="dropdown-item" href="#">訂單管理</a></li>
+                            <li><a class="dropdown-item" href="./../marketplace-page/product-mgmt/order-list.php">訂單管理</a></li>
 
                         </ul>
                     </li>
