@@ -18,7 +18,7 @@ $pdo = null;
 <body>
   <div class="table-responsive container" style="margin-top: 150px;">
     <table id="myTable"
-      class="table table-hover table-success display table-bordered align-middle text-center text-nowrap ">
+      class="table table-hover table-secondary display table-bordered align-middle text-center text-nowrap ">
       <thead class="align-middle">
         <tr>
           <th scope="col">操作</th>
@@ -48,10 +48,10 @@ $pdo = null;
         <tr>
           <td scope="row">
             <a class="text-decoration-none" href="../users-page/user-edit.php">
-              <i class="fa-solid fa-file-pen"></i>
+              <i class="fa-regular fa-pen-to-square"></i>
             </a>
             <a class="text-decoration-none" href="javascript: delete_it(<?= $r['id'] ?>)">
-              <i class="fa-solid fa-trash-can"></i>
+              <i class="fa-regular fa-trash-can"></i>
             </a>
           </td>
           <td><?= $r['id'] ?></td>
