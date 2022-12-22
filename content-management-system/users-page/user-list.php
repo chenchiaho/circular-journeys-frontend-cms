@@ -16,8 +16,8 @@ $pdo = null;
 
 
 <body>
-  <div class="table-responsive container" style="margin-top: 150px;">
-    <h5 class="text-center">會員資料列表</h5>
+  <h5 class="text-center" style="margin-top: 150px;">會員資料列表</h5>
+  <div class="table-responsive container">
     <table id="myTable"
       class="table table-hover table-secondary display table-bordered align-middle text-center text-nowrap ">
       <thead class="align-middle">
@@ -29,6 +29,7 @@ $pdo = null;
           <th scope="col">使用狀態</th>
           <th scope="col">姓</th>
           <th scope="col">名</th>
+          <th scope="col">生日</th>
           <th scope="col">性別</th>
           <th scope="col">密碼</th>
           <th scope="col">驗證碼</th>
@@ -58,12 +59,13 @@ $pdo = null;
           <td><?= $r['id'] ?></td>
           <td><?= $r['member_id'] ?></td>
           <td><?= $r['created_at'] ?></td>
-          <td><?= $r['active_status'] ?></td>
+          <td><?= $r['active_status'] == 1 ? '啟用' : '停用' ?></td>
           <td><?= $r['first_name'] ?></td>
           <td><?= $r['last_name'] ?></td>
-          <td><?= $r['sex'] ?></td>
-          <td><?= $r['password'] ?></td>
-          <td><?= $r['token'] ?></td>
+          <td><?= $r['birthday'] ?></td>
+          <td><?= $r['sex'] == 'm' ? '男' : ($r['sex'] == 'f' ? '女' : '其他') ?></td>
+          <td><?= sha1($r['password']) ?></td>
+          <td><?= sha1($r['token']) ?></td>
           <td><?= $r['email'] ?></td>
           <td><?= $r['telephone'] ?></td>
           <td><?= $r['country'] ?></td>
