@@ -28,7 +28,11 @@ if (empty($r)) {
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
+                    <br>
+                    <br>
+                    <br>
                     <h5 class="card-title">商品資訊修改</h5>
+                    <br>
                     <form name="form1" onsubmit="checkForm(event)" novalidate>
                         <input type="hidden" name="id" value="<?= $r['id'] ?>">
                         <div class="mb-3">
@@ -39,53 +43,63 @@ if (empty($r)) {
 
                         <div class="mb-3">
                             <label for="description" class="form-label">商品敘述</label>
-                            <textarea type="description" class="form-control" id="description" name="description" cols="20" rows="2" value="<?= $r['description'] ?>"></textarea>
+                            <textarea class="form-control" id="description" name="description" cols="20" rows="2"><?= htmlentities($r['description']) ?></textarea>
                             <div class="form-text"></div>
                         </div>
 
+
                         <div class="mb-3">
                             <label for="price" class="form-label">價格</label>
-                            <input type="number" class="form-control" id="price" name="price" value="<?= $r['price'] ?> >
+                            <input type="number" class="form-control" id="price" name="price" value="<?= $r['price'] ?>">
                             <div class=" form-text">
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="inventory" class="form-label">庫存</label>
+                                <input type="number" class="form-control" id="inventory" name="inventory" value="<?= $r['inventory_id'] ?>">
+                                <div class="form-text"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="category" class="form-label">商品分類</label>
+                                <input type="text" class="form-control" name="category" id="category" value="<?= htmlentities($r['category_id']) ?>"> </input>
+                                <div class="form-text"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="product_img" class="form-label">商品圖</label>
+                                <input type="text" class="form-control" name="product_img" id="product_img" value="<?= htmlentities($r['image']) ?>"></input>
+                                <div class="form-text"></div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <h5>是否上架?</h5>
+                                <label for="published" class="form-label">是</label>
+                                <input type="radio" id="published" name="active_status" value="1">
+
+                                <label for="not_published" class="form-label">否</label>
+                                <input type="radio" id="not_published" name="active_status" value="0">
+                                <div class="form-text"></div>
+                            </div>
+
                         </div>
+
+                        <button type="submit" class="btn btn-primary">確認修改</button>
+                    </form>
+
                 </div>
-
-                <div class="mb-3">
-                    <label for="birthday" class="form-label">birthday</label>
-                    <input type="date" class="form-control" id="birthday" name="birthday" value="<?= $r['birthday'] ?>">
-                    <div class="form-text"></div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="address" class="form-label">address</label>
-
-                    <textarea class="form-control" name="address" id="address" cols="30" rows="3"><?= htmlentities($r['address']) ?></textarea>
-                    <div class="form-text"></div>
-                </div>
-
-
-                <button type="submit" class="btn btn-primary">修改</button>
-                </form>
-
             </div>
+
         </div>
-
     </div>
-</div>
 
 
 
 </div>
-<?php include './parts/scripts.php' ?>
+<?php include '../parts/scripts.php' ?>
 <script>
-    function validateEmail(email) {
-        var re =
-            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zAZ]{2,}))$/;
-        return re.test(email);
-    }
-
-
-
     const checkForm = (e) => {
         e.preventDefault(); // 不要讓原來的表單送出
 
@@ -99,26 +113,6 @@ if (empty($r)) {
 
         // TODO: 欄位資料檢查
 
-        let isPass = true; // 預設是通過檢查的
-
-        let field = document.form1.name; // 當前要檢查的欄位
-        if (field.value.length < 2) {
-            isPass = false;
-            field.style.border = '2px solid red';
-            field.nextElementSibling.innerHTML = '請輸入正確的名字';
-        }
-
-        field = document.form1.email; // 當前要檢查的欄位
-        if (!validateEmail(field.value)) {
-            isPass = false;
-            field.style.border = '2px solid red';
-            field.nextElementSibling.innerHTML = '請輸入正確的 Email';
-        }
-
-
-        if (!isPass) {
-            return; // 沒有通過檢查就結束, 不發 AJAX request
-        }
         const fd = new FormData(document.form1);
         fetch('edit-api.php', {
                 method: 'POST',
@@ -142,4 +136,4 @@ if (empty($r)) {
             })
     };
 </script>
-<?php include './parts/html-foot.php' ?>
+<?php include '../parts/html-foot.php' ?>

@@ -1,5 +1,5 @@
 <?php
-require '../parts/connect_db.php';
+require '../../parts/connect_db.php';
 $pageName = 'list';
 $title = "商品列表";
 

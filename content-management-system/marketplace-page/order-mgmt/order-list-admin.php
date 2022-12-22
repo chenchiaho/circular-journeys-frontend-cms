@@ -1,7 +1,7 @@
 <?php
-require '../parts/connect_db.php';
-$pageName = 'list';
-$title = "商品列表";
+require '../../parts/connect_db.php';
+$pageName = 'order-list';
+$title = "訂單管理";
 
 $perPage = 20;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -10,7 +10,7 @@ if ($page < 1) {
     exit;
 }
 
-$t_sql = "SELECT COUNT(1) FROM products";
+$t_sql = "SELECT COUNT(1) FROM orders";
 // 總筆數
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
 
@@ -27,7 +27,7 @@ if (!empty($totalRows)) {
     }
 
     $sql = sprintf(
-        "SELECT * FROM products ORDER BY id DESC LIMIT %s, %s",
+        "SELECT * FROM orders ORDER BY id DESC LIMIT %s, %s",
         ($page - 1) * $perPage,
         $perPage
     );
@@ -35,8 +35,8 @@ if (!empty($totalRows)) {
 }
 
 ?>
-<?php include '../parts/html-head.php' ?>
-<?php include '../parts/navbar.php' ?>
+<?php include '../../parts/html-head.php' ?>
+<?php include '../../parts/navbar.php' ?>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -68,11 +68,15 @@ if (!empty($totalRows)) {
                 <thead>
                     <tr>
 
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Desc</th>
-                        <th scope="col">img</th>
-
+                        <th scope="col">ID</th>
+                        <th scope="col">訂單編號</th>
+                        <th scope="col">會員編號</th>
+                        <th scope="col">產品編號</th>
+                        <th scope="col">數量</th>
+                        <th scope="col">創建日期</th>
+                        <th scope="col">更新日期</th>
+                        <th scope="col"><i class="fa-solid fa-file-pen"></i></th>
+                        <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,10 +84,23 @@ if (!empty($totalRows)) {
                         <tr>
 
                             <td><?= $r['id'] ?></td>
-                            <td><?= $r['name'] ?></td>
-                            <td><?= $r['description'] ?></td>
-                            <td><?= $r['image'] ?></td>
+                            <td><?= $r['order_id'] ?></td>
+                            <td><?= $r['member_id'] ?></td>
+                            <td><?= $r['product_id'] ?></td>
+                            <td><?= $r['quantity'] ?></td>
+                            <td><?= $r['created_at'] ?></td>
+                            <td><?= $r['modified_at'] ?></td>
 
+                            <td>
+                                <a href="edit-orders.php?id=<?= $r['id'] ?>">
+                                    <i class="fa-solid fa-file-pen"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="javascript: delete_it(<?= $r['id'] ?>)">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>
@@ -93,5 +110,12 @@ if (!empty($totalRows)) {
         </div>
     </div>
 </div>
-<?php include '../parts/scripts.php' ?>
-<?php include '../parts/html-foot.php' ?>
+<?php include '../../parts/scripts.php' ?>
+<script>
+    function delete_it(id) {
+        if (confirm(`確定要刪除編號為 ${id} 的資料嗎?`)) {
+            location.href = `delete-orders.php?id=${id}`;
+        }
+    }
+</script>
+<?php include '../../parts/html-foot.php' ?>

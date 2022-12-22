@@ -5,7 +5,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Background-system</a>
+            <a class="navbar-brand" href="#">Content Management System</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -16,9 +16,8 @@
                             會員管理
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">新增修改</a></li>
+                            <li><a class="dropdown-item" href="#">管理清冊</a></li>
                             <li><a class="dropdown-item" href="#">註冊驗證</a></li>
-                            <li><a class="dropdown-item" href="#">管理名單</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -36,8 +35,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="./../marketplace-page/list.php">產品新增修改</a></li>
-                            <li><a class="dropdown-item" href="#">購物車管理</a></li>
-                            <li><a class="dropdown-item" href="#">庫存管理</a></li>
+                            <li><a class="dropdown-item" href="./../marketplace-page/order-mgmt/order-list.php">訂單管理</a></li>
+
                         </ul>
                     </li>
                 </ul>
@@ -54,9 +53,7 @@
                         <li class="nav-item">
                             <a class="nav-link <?= $pageName == 'login' ? 'active' : '' ?>" href="../login.php">登入</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#沒有實作">註冊</a>
-                        </li>
+
                     <?php endif ?>
 
 
