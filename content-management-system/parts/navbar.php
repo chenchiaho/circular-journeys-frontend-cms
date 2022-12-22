@@ -16,7 +16,8 @@
                             會員管理
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="./../users-page/user-list.php">管理清冊</a></li>
+                            <li><a class="dropdown-item" href="./../users-page/user-list.php">資料列表</a></li>
+                            <li><a class="dropdown-item" href="./../users-page/create_member.php">新增會員</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
