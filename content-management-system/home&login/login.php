@@ -3,10 +3,10 @@ require '../parts/connect_db.php';
 $pageName = 'login';
 
 ?>
-<?php include './parts/html-head.php' ?>
+<?php include '../parts/html-head.php' ?>
 
 <body>
-    <div class="container card text-white bg-dark justify-content-center" style="padding: 10px;width:30%;">
+    <div class="container card text-white bg-dark justify-content-center" style="padding: 10px;width:30%;margin-top:200px;">
         <div class="card-body">
             <h5 class="card-title">管理者登入</h5>
             <form name="form1" onsubmit="checkForm(event)">
@@ -44,7 +44,7 @@ $pageName = 'login';
                 console.log(data);
                 if (data.success) {
                     // alert('成功登入');
-                    location.href = 'home.php';
+                    location.href = './../home&login/home_.php';
                 } else {
                     alert(data.error);
                 }
