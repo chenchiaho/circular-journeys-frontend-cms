@@ -16,8 +16,7 @@
                             會員管理
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">管理清冊</a></li>
-                            <li><a class="dropdown-item" href="#">註冊驗證</a></li>
+                            <li><a class="dropdown-item" href="./../users-page/user-list.php">管理清冊</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -39,6 +38,17 @@
 
                         </ul>
                     </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            活動專區
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">活動新增修改</a></li>
+                            <li><a class="dropdown-item" href="#">報名新增修改</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
 
                 <ul class="navbar-nav  mb-2 mb-lg-0">
@@ -47,11 +57,11 @@
                             <a class="nav-link"><?= $_SESSION['admin']['account_id'] ?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../logout.php">登出</a>
+                            <a class="nav-link" href="./../home&login/login.php">登出</a>
                         </li>
                     <?php else : ?>
                         <li class="nav-item">
-                            <a class="nav-link <?= $pageName == 'login' ? 'active' : '' ?>" href="../login.php">登入</a>
+                            <a class="nav-link <?= $pageName == 'login' ? 'active' : '' ?>" href="./../home&login/login.php">登入</a>
                         </li>
 
                     <?php endif ?>
