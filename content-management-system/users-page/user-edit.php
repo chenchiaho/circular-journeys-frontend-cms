@@ -1,40 +1,40 @@
 <?php
 require './admin-required.php';
-require './parts/connect_db.php';
+require '../parts/connect_db.php';
 $title = "修改資料";
 
-$sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-if (empty($sid)) {
-    header('Location: list.php');
+if (empty($id)) {
+    header('Location: user-list.php');
     exit;
 }
 
-$sql = "SELECT * FROM address_book WHERE sid=$sid";
+$sql = "SELECT * FROM users_information WHERE id=$id";
 
 $r = $pdo->query($sql)->fetch();
 if (empty($r)) {
     // 透過編號找不到資料的話
-    header('Location: list.php');
+    header('Location: user-list.php');
     exit;
 }
 
 # echo json_encode($r, JSON_UNESCAPED_UNICODE);
 ?>
-<?php include './parts/html-head.php' ?>
-<?php include './parts/navbar.php' ?>
-<div class="container">
+<?php include '../parts/html-head.php' ?>
+<?php include '../parts/navbar.php' ?>
+<div class="container" style="margin-top: 150px;">
     <div class="row">
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">修改資料</h5>
                     <form name="form1" onsubmit="checkForm(event)" novalidate>
-                        <input type="hidden" name="sid" value="<?= $r['sid'] ?>">
+                        <input type="hidden" name="id" value="<?= $r['id'] ?>">
                         <div class="mb-3">
-                            <label for="name" class="form-label">name</label>
+                            <label for="name" class="form-label">姓名</label>
                             <input type="text" class="form-control" id="name" name="name"
-                                value="<?= htmlentities($r['name']) ?>" required>
+                                value="<?= htmlentities($r['first_name']) ?>" required>
                             <div class="form-text"></div>
                         </div>
 
@@ -47,22 +47,7 @@ if (empty($r)) {
                         <div class="mb-3">
                             <label for="mobile" class="form-label">mobile</label>
                             <input type="number" class="form-control" id="mobile" name="mobile"
-                                value="<?= $r['mobile'] ?>" pattern="09\d{2}-?\d{3}-?\d{3}">
-                            <div class="form-text"></div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="birthday" class="form-label">birthday</label>
-                            <input type="date" class="form-control" id="birthday" name="birthday"
-                                value="<?= $r['birthday'] ?>">
-                            <div class="form-text"></div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="address" class="form-label">address</label>
-
-                            <textarea class="form-control" name="address" id="address" cols="30"
-                                rows="3"><?= htmlentities($r['address']) ?></textarea>
+                                value="<?= $r['telephone'] ?>" pattern="09\d{2}-?\d{3}-?\d{3}">
                             <div class="form-text"></div>
                         </div>
 
@@ -79,7 +64,7 @@ if (empty($r)) {
 
 
 </div>
-<?php include './parts/scripts.php' ?>
+<?php include '../parts/scripts.php' ?>
 <script>
     function validateEmail(email) {
         var re =
@@ -145,4 +130,4 @@ if (empty($r)) {
             })
     };
 </script>
-<?php include './parts/html-foot.php' ?>
+<?php include '../parts/html-foot.php' ?>

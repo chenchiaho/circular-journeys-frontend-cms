@@ -46,7 +46,7 @@ $pdo = null;
         <?php foreach ($rows as $r) : ?>
           <tr>
             <td scope="row">
-              <a class="text-decoration-none" href="../users-page/user-edit.php">
+              <a class="text-decoration-none" href="./user-edit.php?id=<?= $r['id'] ?>">
                 <i class="fa-regular fa-pen-to-square"></i>
               </a>
               <a class="text-decoration-none" href="javascript: delete_it(<?= $r['id'] ?>)">
