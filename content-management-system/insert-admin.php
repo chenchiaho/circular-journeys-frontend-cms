@@ -1,7 +1,7 @@
 <?php
 require './parts/connect_db.php';
 
-$account = 'Alan';
+$account = 'Feng';
 $password = '123456';
 
 $hash = password_hash($password, PASSWORD_BCRYPT);

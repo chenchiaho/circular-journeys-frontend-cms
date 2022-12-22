@@ -13,7 +13,9 @@ $title = "新增商品";
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">新增商品</h5>
-                    <form name="form1" onsubmit="checkForm(event)" novalidate>
+
+
+                    <form method="POST" name="form1" onsubmit="checkForm(event)" novalidate>
                         <div class="mb-3">
                             <label for="name" class="form-label">商品名稱</label>
                             <input type="text" class="form-control" id="name" name="name" required>
@@ -44,12 +46,7 @@ $title = "新增商品";
                             <input class="form-control" name="category" id="category"></input>
                             <div class="form-text"></div>
                         </div>
-                        <div class="mb-3">
-                            <label for="product_img" class="form-label">商品圖</label>
 
-                            <input class="form-control" name="product_img" id="product_img"></input>
-                            <div class="form-text"></div>
-                        </div>
 
                         <div>
                             <p>是否上架?</p>
@@ -59,9 +56,22 @@ $title = "新增商品";
                             <label for="not_published">否</label>
                             <input type="radio" id="not_published" name="active_status" value="0">
                         </div>
+
+                        <div>
+
+                            <label for="upload">上傳圖片</label>
+                            <input class="form-control" type="file" id="upload" name="upload">
+
+
+                        </div>
                         <br>
-                        <button type="submit" class="btn btn-primary">確認新增</button>
+                        <button type="submit" name="submit" value="Upload Image" class="btn btn-primary">確認新增</button>
+
+
+
                     </form>
+
+
 
                 </div>
             </div>
@@ -75,13 +85,14 @@ $title = "新增商品";
 <?php include '../parts/scripts.php' ?>
 <script>
     const checkForm = (e) => {
-        e.preventDefault(); // 不要讓原來的表單送出
+        // 不要讓原來的表單送出
+        e.preventDefault();
 
         // 所有輸入欄回復原來的外觀
         const inputs = document.querySelectorAll('input.form-control');
         inputs.forEach((el) => {
             el.style.border = '1px solid #CCCCCC';
-            el.nextElementSibling.innerHTML = '';
+            // el.nextElementSibling.innerHTML = '';
         });
 
 
@@ -95,7 +106,8 @@ $title = "新增商品";
             .then(obj => {
                 console.log(obj);
                 if (obj.success) {
-                    alert('新增成功');
+                    console.log('新增成功');
+                    // alert('新增成功');
                 } else {
                     for (let k in obj.errors) {
                         const el = document.querySelector('#' + k);

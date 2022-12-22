@@ -19,7 +19,7 @@ $price = $_POST['price'] ?? '';
 $modified_at = '';
 $inventory = $_POST['inventory'] ?? '';
 $category = $_POST['category'] ?? '';
-$product_img = $_POST['product_img'] ?? '';
+// $product_img = $_POST['product_img'] ?? '';
 // $active_status = $_POST['active_status'] ?? '';
 
 
@@ -27,7 +27,6 @@ $product_img = $_POST['product_img'] ?? '';
 $sql = "UPDATE `products` SET
 `name`=?,
 `description`=?,
-`image`=?,
 `price`=?,
 `modified_at`= NOW(),
 `category_id`=?,
@@ -40,7 +39,6 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([
     $name,
     $description,
-    $product_img,
     $price,
     $category,
     $inventory,

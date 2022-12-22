@@ -3,11 +3,22 @@ require './admin-required-api.php';
 require '../parts/connect_db.php';
 header('Content-Type: application/json');
 
+
+
+
+
+$ext = strtolower(pathinfo($_FILES['upload']['name'], PATHINFO_EXTENSION));
+$newName = uniqid('image_') . '.' . $ext;
+$destination = 'product-images/' . $newName;
+move_uploaded_file($_FILES['upload']['tmp_name'], $destination);
+
+
 $output = [
-    'success' => false,
-    'postData' => $_POST,
-    'code' => 0,
-    'errors' => []
+  'success' => false,
+  'postFile' => $_FILES,
+  'postData' => $_POST,
+  'code' => 0,
+  'errors' => []
 ];
 
 
@@ -16,7 +27,7 @@ $description = $_POST['description'] ?? '';
 $price = $_POST['price'] ?? '';
 $inventory = $_POST['inventory'] ?? '';
 $category = $_POST['category'] ?? '';
-$product_img = $_POST['product_img'] ?? '';
+$product_img = $destination ?? '';
 $active_status = $_POST['active_status'] ?? '';
 
 
@@ -30,13 +41,13 @@ $sql = "INSERT INTO `products`(
 $stmt = $pdo->prepare($sql);
 
 $stmt->execute([
-    $name,
-    $description,
-    $price,
-    $inventory,
-    $category,
-    $product_img,
-    $active_status
+  $name,
+  $description,
+  $product_img,
+  $price,
+  $category,
+  $inventory,
+  $active_status
 ]);
 
 $output['success'] = !!$stmt->rowCount();

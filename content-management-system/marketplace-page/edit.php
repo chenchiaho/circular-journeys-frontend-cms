@@ -68,13 +68,6 @@ if (empty($r)) {
                             </div>
 
                             <div class="mb-3">
-                                <label for="product_img" class="form-label">商品圖</label>
-                                <input type="text" class="form-control" name="product_img" id="product_img" value="<?= htmlentities($r['image']) ?>"></input>
-                                <div class="form-text"></div>
-                            </div>
-
-
-                            <div class="mb-3">
                                 <h5>是否上架?</h5>
                                 <label for="published" class="form-label">是</label>
                                 <input type="radio" id="published" name="active_status" value="1">

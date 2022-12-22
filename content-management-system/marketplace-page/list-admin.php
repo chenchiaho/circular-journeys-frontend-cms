@@ -89,7 +89,17 @@ if (!empty($totalRows)) {
                         <tr>
 
                             <td><?= $r['id'] ?></td>
-                            <td><?= $r['image'] ?></td>
+
+                            <td>
+                                <a href="edit-image.php?id=<?= $r['id'] ?>">
+                                    <?php if (!empty($r['image'])) : ?>
+                                        <img src="<?= $r['image'] ?>" height="60">
+                                    <?php else : ?>
+                                        <img class="fa-solid fa-image fa-4x" src="" height="60">
+                                    <?php endif; ?>
+                                </a>
+                            </td>
+
                             <td><?= $r['name'] ?></td>
                             <td><?= $r['description'] ?></td>
                             <td><?= $r['price'] ?></td>
