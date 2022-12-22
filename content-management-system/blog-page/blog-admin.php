@@ -7,7 +7,7 @@ if($page<1){
     header('Location: ?page=1');
     exit;
 }
-
+// hahaha
 // 總比數
 $t_sql = "SELECT count(1) FROM post";
 $totalRows =$pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
