@@ -172,10 +172,6 @@ if (empty($r)) {
     const checkForm = (e) => {
         e.preventDefault(); // 不要讓原來的表單送出
 
-        // 所有輸入欄回復原來的外觀
-
-        // TODO: 欄位資料檢查
-
         const fd = new FormData(document.form1);
         fetch('update-user.php', {
             method: 'POST',
@@ -186,7 +182,7 @@ if (empty($r)) {
                 console.log(obj);
                 if (obj.success) {
                     alert('修改成功');
-                    window.location='user-list.php';
+                    window.location = 'user-list.php';
                 } else {
                     for (let k in obj.errors) {
                         const el = document.querySelector('#' + k);
