@@ -1,5 +1,5 @@
 <?php
-require './parts/connect_db.php';
+require '../parts/connect_db.php';
 $pageName = 'login';
 
 ?>
@@ -27,7 +27,7 @@ $pageName = 'login';
     </div>
 </body>
 
-<?php include './parts/scripts.php' ?>
+<?php include '../parts/scripts.php' ?>
 <script>
     function checkForm(e) {
         e.preventDefault();
@@ -52,4 +52,4 @@ $pageName = 'login';
 
     }
 </script>
-<?php include './parts/html-foot.php' ?>
+<?php include '../parts/html-foot.php' ?>

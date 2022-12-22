@@ -25,7 +25,7 @@
                             發文系統
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">檢舉審核</a></li>
+                            <li><a class="dropdown-item" href="./../blog-page/blog-admin.php">檢舉審核</a></li>
                             <li><a class="dropdown-item" href="#">文章審核</a></li>
                         </ul>
                     </li>
