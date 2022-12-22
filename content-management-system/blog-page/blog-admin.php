@@ -95,9 +95,8 @@ if(! empty($totalRows)){
                         <th scope="col">創建日期</th>
                         <th scope="col">更新日期</th>
                         <th scope="col">檢舉</th>
-                        <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
-                        <th scope="col"><i class="fa-solid fa-file-pen"></i></th>
-
+                        <th scope="col">復原</th>
+                        <th scope="col">刪除</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -110,8 +109,8 @@ if(! empty($totalRows)){
                             <td><?= $r['created_date'] ?></td>
                             <td><?= $r['modified_date'] ?></td>
                             <td><?= $r['is_reported'] ?></td>
-                            <td></td>
-                            <td></td>
+                            <td><i class="fa-solid fa-share-from-square"></i></td>
+                            <td><i class="fa-solid fa-trash-can"></i></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>
@@ -132,4 +131,5 @@ if(! empty($totalRows)){
 2. 會員文章下架
 3. 管理者查看文章確認
 4. 管理者恢復文章 或 管理者下架文章(🔺刪除資料庫？)
+
 -->
