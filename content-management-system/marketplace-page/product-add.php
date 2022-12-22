@@ -1,7 +1,7 @@
 <?php
 require './admin-required.php';
 require '../parts/connect_db.php';
-$pageName = 'add';
+$pageName = 'add product';
 $title = "新增商品";
 
 ?>
@@ -98,7 +98,7 @@ $title = "新增商品";
 
         const fd = new FormData(document.form1);
 
-        fetch('add-api.php', {
+        fetch('product-add-api.php', {
                 method: 'POST',
                 body: fd
             })

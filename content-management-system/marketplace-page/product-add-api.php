@@ -4,9 +4,6 @@ require '../parts/connect_db.php';
 header('Content-Type: application/json');
 
 
-
-
-
 $ext = strtolower(pathinfo($_FILES['upload']['name'], PATHINFO_EXTENSION));
 $newName = uniqid('image_') . '.' . $ext;
 $destination = 'product-images/' . $newName;

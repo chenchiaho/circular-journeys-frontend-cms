@@ -1,6 +1,6 @@
 <?php
-require '../admin-required.php';
-require '../../parts/connect_db.php';
+require 'admin-required.php';
+require '../parts/connect_db.php';
 $title = "訂單資訊修改";
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -21,8 +21,8 @@ if (empty($r)) {
 
 ?>
 
-<?php include '../../parts/html-head.php' ?>
-<?php include '../../parts/navbar.php' ?>
+<?php include '../parts/html-head.php' ?>
+<?php include '../parts/navbar.php' ?>
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
@@ -76,7 +76,7 @@ if (empty($r)) {
 
 
 </div>
-<?php include '../../parts/scripts.php' ?>
+<?php include '../parts/scripts.php' ?>
 <script>
     const checkForm = (e) => {
         e.preventDefault(); // 不要讓原來的表單送出
@@ -92,7 +92,7 @@ if (empty($r)) {
         // TODO: 欄位資料檢查
 
         const fd = new FormData(document.form1);
-        fetch('edit-orders-api.php', {
+        fetch('order-edit-api.php', {
                 method: 'POST',
                 body: fd
             })
@@ -114,4 +114,4 @@ if (empty($r)) {
             })
     };
 </script>
-<?php include '../../parts/html-foot.php' ?>
+<?php include '../parts/html-foot.php' ?>

@@ -1,6 +1,7 @@
 <?php
-require '../../parts/connect_db.php';
-$pageName = 'order-list';
+require './admin-required.php';
+require '../parts/connect_db.php';
+$pageName = 'order list';
 $title = "訂單管理";
 
 $perPage = 20;
@@ -35,8 +36,8 @@ if (!empty($totalRows)) {
 }
 
 ?>
-<?php include '../../parts/html-head.php' ?>
-<?php include '../../parts/navbar.php' ?>
+<?php include '../parts/html-head.php' ?>
+<?php include '../parts/navbar.php' ?>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -110,7 +111,7 @@ if (!empty($totalRows)) {
         </div>
     </div>
 </div>
-<?php include '../../parts/scripts.php' ?>
+<?php include '../parts/scripts.php' ?>
 <script>
     function delete_it(id) {
         if (confirm(`確定要刪除編號為 ${id} 的資料嗎?`)) {
@@ -118,4 +119,4 @@ if (!empty($totalRows)) {
         }
     }
 </script>
-<?php include '../../parts/html-foot.php' ?>
+<?php include '../parts/html-foot.php' ?>

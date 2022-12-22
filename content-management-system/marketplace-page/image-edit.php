@@ -6,7 +6,7 @@ $title = "圖片修改";
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if (empty($id)) {
-    header('Location: list.php');
+    header('Location: product-list.php');
     exit;
 }
 
@@ -75,7 +75,7 @@ if (empty($r)) {
         // TODO: 欄位資料檢查
 
         const fd = new FormData(document.form1);
-        fetch('edit-image-api.php', {
+        fetch('image-edit-api.php', {
                 method: 'POST',
                 body: fd
             })

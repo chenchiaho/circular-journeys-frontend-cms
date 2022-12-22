@@ -1,6 +1,7 @@
 <?php
+require './admin-required.php';
 require '../parts/connect_db.php';
-$pageName = 'list';
+$pageName = 'product list';
 $title = "商品管理";
 
 $perPage = 20;
@@ -91,7 +92,7 @@ if (!empty($totalRows)) {
                             <td><?= $r['id'] ?></td>
 
                             <td>
-                                <a href="edit-image.php?id=<?= $r['id'] ?>">
+                                <a href="image-edit.php?id=<?= $r['id'] ?>">
                                     <?php if (!empty($r['image'])) : ?>
                                         <img src="<?= $r['image'] ?>" height="60">
                                     <?php else : ?>
@@ -110,12 +111,12 @@ if (!empty($totalRows)) {
                             <td><?= $r['modified_at'] ?></td>
                             <td>
 
-                                <a href="add.php">
+                                <a href="product-add.php">
                                     <i class="fa-solid fa-plus"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="edit.php?id=<?= $r['id'] ?>">
+                                <a href="product-edit.php?id=<?= $r['id'] ?>">
                                     <i class="fa-solid fa-file-pen"></i>
                                 </a>
                             </td>
@@ -137,7 +138,7 @@ if (!empty($totalRows)) {
 <script>
     function delete_it(id) {
         if (confirm(`確定要刪除編號為 ${id} 的資料嗎?`)) {
-            location.href = `delete.php?id=${id}`;
+            location.href = `product-delete.php?id=${id}`;
         }
     }
 </script>
