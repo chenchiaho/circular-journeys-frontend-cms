@@ -1,5 +1,5 @@
 <?php
-require './parts/connect_db.php';
+require '../parts/connect_db.php';
 
 $account = 'Feng';
 $password = '123456';
