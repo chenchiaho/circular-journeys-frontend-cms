@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 
 if (!isset($_SESSION['admin'])) {
 
-  echo "<script>location.href='../home&login/login.php';</script>";
+  echo "<script>location.href='../home-login/login.php';</script>";
 
   // header('Location: login.php');
   // exit;

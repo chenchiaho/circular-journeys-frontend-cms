@@ -1,5 +1,5 @@
 <?php
-require './admin-required-api.php';
+require 'admin-required-api.php';
 require '../parts/connect_db.php';
 header('Content-Type: application/json');
 
@@ -20,7 +20,7 @@ $modified_at = '';
 $inventory = $_POST['inventory'] ?? '';
 $category = $_POST['category'] ?? '';
 // $product_img = $_POST['product_img'] ?? '';
-// $active_status = $_POST['active_status'] ?? '';
+$active_status = $_POST['active_status'] ?? '0';
 
 
 
@@ -30,8 +30,8 @@ $sql = "UPDATE `products` SET
 `price`=?,
 `modified_at`= NOW(),
 `category_id`=?,
-`inventory_id`=?
--- `active_status`=?
+`inventory_id`=?,
+`active_status`=?
 WHERE `id`=?";
 
 $stmt = $pdo->prepare($sql);
@@ -42,7 +42,7 @@ $stmt->execute([
     $price,
     $category,
     $inventory,
-    // $active_status,
+    $active_status,
     $sid
 ]);
 

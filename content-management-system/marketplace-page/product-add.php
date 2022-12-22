@@ -1,5 +1,5 @@
 <?php
-require './admin-required.php';
+require 'admin-required.php';
 require '../parts/connect_db.php';
 $pageName = 'add product';
 $title = "新增商品";
@@ -49,12 +49,11 @@ $title = "新增商品";
 
 
                         <div>
-                            <p>是否上架?</p>
-                            <label for="published">是</label>
-                            <input type="radio" id="published" name="active_status" value="1">
 
-                            <label for="not_published">否</label>
-                            <input type="radio" id="not_published" name="active_status" value="0">
+                            <label for="active_status">是否已上架?</label>
+                            <input type="checkbox" id="active_status" name="active_status" value="1">
+
+
                         </div>
 
                         <div>
@@ -107,7 +106,8 @@ $title = "新增商品";
                 console.log(obj);
                 if (obj.success) {
                     console.log('新增成功');
-                    // alert('新增成功');
+                    location.href = 'product-list.php';
+
                 } else {
                     for (let k in obj.errors) {
                         const el = document.querySelector('#' + k);

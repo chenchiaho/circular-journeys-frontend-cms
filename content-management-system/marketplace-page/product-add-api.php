@@ -1,14 +1,14 @@
 <?php
-require './admin-required-api.php';
+require 'admin-required-api.php';
 require '../parts/connect_db.php';
 header('Content-Type: application/json');
 
-
-$ext = strtolower(pathinfo($_FILES['upload']['name'], PATHINFO_EXTENSION));
-$newName = uniqid('image_') . '.' . $ext;
-$destination = 'product-images/' . $newName;
-move_uploaded_file($_FILES['upload']['tmp_name'], $destination);
-
+if (!empty($_FILES['upload']['name'])) {
+  $ext = strtolower(pathinfo($_FILES['upload']['name'], PATHINFO_EXTENSION));
+  $newName = uniqid('image_') . '.' . $ext;
+  $destination = 'product-images/' . $newName;
+  move_uploaded_file($_FILES['upload']['tmp_name'], $destination);
+}
 
 $output = [
   'success' => false,
@@ -25,7 +25,7 @@ $price = $_POST['price'] ?? '';
 $inventory = $_POST['inventory'] ?? '';
 $category = $_POST['category'] ?? '';
 $product_img = $destination ?? '';
-$active_status = $_POST['active_status'] ?? '';
+$active_status = $_POST['active_status'] ?? '0';
 
 
 $sql = "INSERT INTO `products`(

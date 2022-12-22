@@ -1,5 +1,5 @@
 <?php
-require './admin-required.php';
+require 'admin-required.php';
 require '../parts/connect_db.php';
 $pageName = 'product list';
 $title = "商品管理";

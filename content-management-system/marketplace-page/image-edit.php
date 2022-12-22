@@ -1,5 +1,5 @@
 <?php
-require './admin-required.php';
+require 'admin-required.php';
 require '../parts/connect_db.php';
 $title = "圖片修改";
 
@@ -84,6 +84,7 @@ if (empty($r)) {
                 console.log(obj);
                 if (obj.success) {
                     console.log('更新成功');
+                    location.href = 'product-list.php';
                 } else {
                     for (let k in obj.errors) {
                         const el = document.querySelector('#' + k);

@@ -1,5 +1,5 @@
 <?php
-require './admin-required.php';
+require 'admin-required.php';
 require '../parts/connect_db.php';
 $title = "商品資訊修改";
 
@@ -68,13 +68,11 @@ if (empty($r)) {
                             </div>
 
                             <div class="mb-3">
-                                <h5>是否上架?</h5>
-                                <label for="published" class="form-label">是</label>
-                                <input type="radio" id="published" name="active_status" value="1">
 
-                                <label for="not_published" class="form-label">否</label>
-                                <input type="radio" id="not_published" name="active_status" value="0">
-                                <div class="form-text"></div>
+                                <label for="active_status" class="form-label">是否已上架?</label>
+                                <input type="checkbox" id="active_status" name="active_status" value="1" <?php if ($r['active_status'] == 1) : ?> checked <?php else : ?> unchecked> <?php endif; ?>
+
+
                             </div>
 
                         </div>
@@ -115,7 +113,8 @@ if (empty($r)) {
             .then(obj => {
                 console.log(obj);
                 if (obj.success) {
-                    alert('修改成功');
+                    console.log('修改成功');
+                    location.href = 'product-list.php';
                 } else {
                     for (let k in obj.errors) {
                         const el = document.querySelector('#' + k);

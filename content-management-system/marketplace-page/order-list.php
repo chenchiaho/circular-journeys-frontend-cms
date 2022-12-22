@@ -1,5 +1,5 @@
 <?php
-require './admin-required.php';
+require 'admin-required.php';
 require '../parts/connect_db.php';
 $pageName = 'order list';
 $title = "訂單管理";
@@ -72,10 +72,10 @@ if (!empty($totalRows)) {
                         <th scope="col">ID</th>
                         <th scope="col">訂單編號</th>
                         <th scope="col">會員編號</th>
-                        <th scope="col">產品編號</th>
-                        <th scope="col">數量</th>
+                        <!-- <th scope="col">產品編號</th> -->
+                        <!-- <th scope="col">數量</th> -->
                         <th scope="col">創建日期</th>
-                        <th scope="col">更新日期</th>
+                        <!-- <th scope="col">更新日期</th> -->
                         <th scope="col"><i class="fa-solid fa-file-pen"></i></th>
                         <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
                     </tr>
@@ -87,13 +87,12 @@ if (!empty($totalRows)) {
                             <td><?= $r['id'] ?></td>
                             <td><?= $r['order_id'] ?></td>
                             <td><?= $r['member_id'] ?></td>
-                            <td><?= $r['product_id'] ?></td>
-                            <td><?= $r['quantity'] ?></td>
+
                             <td><?= $r['created_at'] ?></td>
-                            <td><?= $r['modified_at'] ?></td>
+
 
                             <td>
-                                <a href="edit-orders.php?id=<?= $r['id'] ?>">
+                                <a href="order-edit.php?id=<?= $r['id'] ?>">
                                     <i class="fa-solid fa-file-pen"></i>
                                 </a>
                             </td>
@@ -115,7 +114,7 @@ if (!empty($totalRows)) {
 <script>
     function delete_it(id) {
         if (confirm(`確定要刪除編號為 ${id} 的資料嗎?`)) {
-            location.href = `delete-orders.php?id=${id}`;
+            location.href = `order-delete.php?id=${id}`;
         }
     }
 </script>

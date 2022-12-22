@@ -48,30 +48,17 @@ if (empty($r)) {
                         </div>
 
 
-                        <div class="mb-3">
-                            <label for="product_id" class="form-label">商品編號</label>
-                            <input type="number" class="form-control" id="product_id" name="product_id" value="<?= $r['product_id'] ?>">
-                            <div class=" form-text">
-                            </div>
-
-
-                            <div class="mb-3">
-                                <label for="quantity" class="form-label">數量</label>
-                                <input type="number" class="form-control" id="quantity" name="quantity" value="<?= $r['quantity'] ?>">
-                                <div class="form-text"></div>
-                            </div>
-
-
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">確認修改</button>
-                    </form>
 
                 </div>
-            </div>
 
+                <button type="submit" class="btn btn-primary">確認修改</button>
+                </form>
+
+            </div>
         </div>
+
     </div>
+</div>
 
 
 
@@ -100,7 +87,9 @@ if (empty($r)) {
             .then(obj => {
                 console.log(obj);
                 if (obj.success) {
-                    alert('修改成功');
+                    console.log('修改成功');
+                    location.href = 'order-list.php';
+
                 } else {
                     for (let k in obj.errors) {
                         const el = document.querySelector('#' + k);
