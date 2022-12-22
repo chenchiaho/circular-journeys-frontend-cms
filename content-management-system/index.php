@@ -6,7 +6,7 @@ $pageName = 'login';
 <?php include './parts/html-head.php' ?>
 
 <body>
-    <div class="container card text-white bg-dark justify-content-center" style="padding: 10px;width:30%;">
+    <div class="container card text-white bg-dark justify-content-center" style="padding: 10px;width:30%; margin-top:150px;">
         <div class="card-body">
             <h5 class="card-title">管理者登入</h5>
             <form name="form1" onsubmit="checkForm(event)">

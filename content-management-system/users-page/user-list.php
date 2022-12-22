@@ -17,7 +17,9 @@ $pdo = null;
 
 <body>
   <div class="table-responsive container" style="margin-top: 150px;">
-    <table id="myTable" class="table table-hover table-secondary display table-bordered align-middle text-center text-nowrap ">
+    <h5 class="text-center">會員資料列表</h5>
+    <table id="myTable"
+      class="table table-hover table-secondary display table-bordered align-middle text-center text-nowrap ">
       <thead class="align-middle">
         <tr>
           <th scope="col">操作</th>
@@ -43,36 +45,36 @@ $pdo = null;
         </tr>
       </thead>
       <tbody class="table-light ">
-        <?php foreach ($rows as $r) : ?>
-          <tr>
-            <td scope="row">
-              <a class="text-decoration-none" href="./user-edit.php?id=<?= $r['id'] ?>">
-                <i class="fa-regular fa-pen-to-square"></i>
-              </a>
-              <a class="text-decoration-none" href="javascript: delete_it(<?= $r['id'] ?>)">
-                <i class="fa-regular fa-trash-can"></i>
-              </a>
-            </td>
-            <td><?= $r['id'] ?></td>
-            <td><?= $r['member_id'] ?></td>
-            <td><?= $r['created_at'] ?></td>
-            <td><?= $r['active_status'] ?></td>
-            <td><?= $r['first_name'] ?></td>
-            <td><?= $r['last_name'] ?></td>
-            <td><?= $r['sex'] ?></td>
-            <td><?= $r['password'] ?></td>
-            <td><?= $r['token'] ?></td>
-            <td><?= $r['email'] ?></td>
-            <td><?= $r['telephone'] ?></td>
-            <td><?= $r['country'] ?></td>
-            <td><?= $r['city'] ?></td>
-            <td><?= $r['postal_code'] ?></td>
-            <td><?= $r['address'] ?></td>
-            <td><?= $r['payment_type'] ?></td>
-            <td><?= $r['provider'] ?></td>
-            <td><?= $r['account_no'] ?></td>
-            <td><?= $r['expiry'] ?></td>
-          </tr>
+        <?php foreach ($rows as $r): ?>
+        <tr>
+          <td scope="row">
+            <a class="text-decoration-none" href="./user-edit.php?id=<?= $r['id'] ?>">
+              <i class="fa-regular fa-pen-to-square"></i>
+            </a>
+            <a class="text-decoration-none" href="javascript: delete_it(<?= $r['id'] ?>)">
+              <i class="fa-regular fa-trash-can"></i>
+            </a>
+          </td>
+          <td><?= $r['id'] ?></td>
+          <td><?= $r['member_id'] ?></td>
+          <td><?= $r['created_at'] ?></td>
+          <td><?= $r['active_status'] ?></td>
+          <td><?= $r['first_name'] ?></td>
+          <td><?= $r['last_name'] ?></td>
+          <td><?= $r['sex'] ?></td>
+          <td><?= $r['password'] ?></td>
+          <td><?= $r['token'] ?></td>
+          <td><?= $r['email'] ?></td>
+          <td><?= $r['telephone'] ?></td>
+          <td><?= $r['country'] ?></td>
+          <td><?= $r['city'] ?></td>
+          <td><?= $r['postal_code'] ?></td>
+          <td><?= $r['address'] ?></td>
+          <td><?= $r['payment_type'] ?></td>
+          <td><?= $r['provider'] ?></td>
+          <td><?= $r['account_no'] ?></td>
+          <td><?= $r['expiry'] ?></td>
+        </tr>
         <?php endforeach ?>
       </tbody>
     </table>
