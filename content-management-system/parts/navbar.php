@@ -39,6 +39,17 @@
 
                         </ul>
                     </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            活動專區
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">活動新增修改</a></li>
+                            <li><a class="dropdown-item" href="#">報名新增修改</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
 
                 <ul class="navbar-nav  mb-2 mb-lg-0">
