@@ -181,7 +181,7 @@ if (empty($r)) {
     });
 
     const checkForm = (e) => {
-        e.preventDefault(); // 不要讓原來的表單送出
+        e.preventDefault();
 
         const fd = new FormData(document.form1);
         fetch('update-user.php', {
