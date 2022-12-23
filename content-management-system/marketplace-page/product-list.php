@@ -2,7 +2,7 @@
 require 'admin-required.php';
 require '../parts/connect_db.php';
 $pageName = 'product list';
-$title = "商品管理";
+$title = "商品管理2";
 
 $perPage = 20;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;

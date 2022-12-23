@@ -9,6 +9,9 @@
 # production
 /build
 
+# images
+/marketplace-page/product-images
+
 # misc
 **/.DS_Store
 .env.local
