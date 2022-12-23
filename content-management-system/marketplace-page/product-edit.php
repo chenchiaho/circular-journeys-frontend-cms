@@ -1,12 +1,12 @@
 <?php
-require './admin-required.php';
+require 'admin-required.php';
 require '../parts/connect_db.php';
 $title = "商品資訊修改";
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if (empty($id)) {
-    header('Location: list.php');
+    header('Location: product-list.php');
     exit;
 }
 
@@ -68,20 +68,11 @@ if (empty($r)) {
                             </div>
 
                             <div class="mb-3">
-                                <label for="product_img" class="form-label">商品圖</label>
-                                <input type="text" class="form-control" name="product_img" id="product_img" value="<?= htmlentities($r['image']) ?>"></input>
-                                <div class="form-text"></div>
-                            </div>
+
+                                <label for="active_status" class="form-label">是否已上架?</label>
+                                <input type="checkbox" id="active_status" name="active_status" value="1" <?php if ($r['active_status'] == 1) : ?> checked <?php else : ?> unchecked> <?php endif; ?>
 
 
-                            <div class="mb-3">
-                                <h5>是否上架?</h5>
-                                <label for="published" class="form-label">是</label>
-                                <input type="radio" id="published" name="active_status" value="1">
-
-                                <label for="not_published" class="form-label">否</label>
-                                <input type="radio" id="not_published" name="active_status" value="0">
-                                <div class="form-text"></div>
                             </div>
 
                         </div>
@@ -114,7 +105,7 @@ if (empty($r)) {
         // TODO: 欄位資料檢查
 
         const fd = new FormData(document.form1);
-        fetch('edit-api.php', {
+        fetch('product-edit-api.php', {
                 method: 'POST',
                 body: fd
             })
@@ -122,7 +113,8 @@ if (empty($r)) {
             .then(obj => {
                 console.log(obj);
                 if (obj.success) {
-                    alert('修改成功');
+                    console.log('修改成功');
+                    location.href = 'product-list.php';
                 } else {
                     for (let k in obj.errors) {
                         const el = document.querySelector('#' + k);

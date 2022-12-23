@@ -36,15 +36,15 @@ $pageName = 'login';
         const fd = new FormData(document.form1);
 
         fetch('login-api.php', {
-            method: 'POST',
-            body: fd
-        })
+                method: 'POST',
+                body: fd
+            })
             .then(r => r.json())
             .then(data => {
                 console.log(data);
                 if (data.success) {
                     // alert('成功登入');
-                    location.href = './../home&login/home_.php';
+                    location.href = './../home-login/home_.php';
                 } else {
                     alert(data.error);
                 }

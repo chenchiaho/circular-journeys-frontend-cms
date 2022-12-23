@@ -34,8 +34,8 @@
                             商城系統
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="./../marketplace-page/list.php">產品新增修改</a></li>
-                            <li><a class="dropdown-item" href="./../marketplace-page/order-mgmt/order-list.php">訂單管理</a></li>
+                            <li><a class="dropdown-item" href="./../marketplace-page/product-list.php">產品新增修改</a></li>
+                            <li><a class="dropdown-item" href="./../marketplace-page/order-list.php">訂單管理</a></li>
 
                         </ul>
                     </li>
@@ -58,11 +58,11 @@
                             <a class="nav-link"><?= $_SESSION['admin']['account_id'] ?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./../home&login/login.php">登出</a>
+                            <a class="nav-link" href="./../home-login/login.php">登出</a>
                         </li>
                     <?php else : ?>
                         <li class="nav-item">
-                            <a class="nav-link <?= $pageName == 'login' ? 'active' : '' ?>" href="./../home&login/login.php">登入</a>
+                            <a class="nav-link <?= $pageName == 'login' ? 'active' : '' ?>" href="./../home-login/login.php">登入</a>
                         </li>
 
                     <?php endif ?>

@@ -1,6 +1,6 @@
 <?php
-require '../admin-required.php';
-require '../../parts/connect_db.php';
+require 'admin-required.php';
+require '../parts/connect_db.php';
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 

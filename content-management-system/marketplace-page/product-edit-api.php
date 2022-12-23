@@ -1,5 +1,5 @@
 <?php
-require './admin-required-api.php';
+require 'admin-required-api.php';
 require '../parts/connect_db.php';
 header('Content-Type: application/json');
 
@@ -11,21 +11,28 @@ $output = [
 ];
 
 
+$sid = intval($_POST['id']);
+
 $name = $_POST['name'] ?? '';
 $description = $_POST['description'] ?? '';
 $price = $_POST['price'] ?? '';
+$modified_at = '';
 $inventory = $_POST['inventory'] ?? '';
 $category = $_POST['category'] ?? '';
-$product_img = $_POST['product_img'] ?? '';
-$active_status = $_POST['active_status'] ?? '';
+// $product_img = $_POST['product_img'] ?? '';
+$active_status = $_POST['active_status'] ?? '0';
 
 
-$sql = "INSERT INTO `products`(
-  `name`, `description`, `image`, `price`, `created_at`, `modified_at`, `category_id`, `inventory_id`, `active_status`
-  ) VALUES (
-    ?,?,?,?,NOW(),NOW(),
-    ?,?,? 
-  )";
+
+$sql = "UPDATE `products` SET
+`name`=?,
+`description`=?,
+`price`=?,
+`modified_at`= NOW(),
+`category_id`=?,
+`inventory_id`=?,
+`active_status`=?
+WHERE `id`=?";
 
 $stmt = $pdo->prepare($sql);
 
@@ -33,12 +40,14 @@ $stmt->execute([
     $name,
     $description,
     $price,
-    $inventory,
     $category,
-    $product_img,
-    $active_status
+    $inventory,
+    $active_status,
+    $sid
 ]);
 
 $output['success'] = !!$stmt->rowCount();
+
+
 
 echo json_encode($output, JSON_UNESCAPED_UNICODE);

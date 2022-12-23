@@ -1,6 +1,6 @@
 <?php
-require '../admin-required.php';
-require '../../parts/connect_db.php';
+require 'admin-required.php';
+require '../parts/connect_db.php';
 $title = "訂單資訊修改";
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -21,8 +21,8 @@ if (empty($r)) {
 
 ?>
 
-<?php include '../../parts/html-head.php' ?>
-<?php include '../../parts/navbar.php' ?>
+<?php include '../parts/html-head.php' ?>
+<?php include '../parts/navbar.php' ?>
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
@@ -48,35 +48,22 @@ if (empty($r)) {
                         </div>
 
 
-                        <div class="mb-3">
-                            <label for="product_id" class="form-label">商品編號</label>
-                            <input type="number" class="form-control" id="product_id" name="product_id" value="<?= $r['product_id'] ?>">
-                            <div class=" form-text">
-                            </div>
-
-
-                            <div class="mb-3">
-                                <label for="quantity" class="form-label">數量</label>
-                                <input type="number" class="form-control" id="quantity" name="quantity" value="<?= $r['quantity'] ?>">
-                                <div class="form-text"></div>
-                            </div>
-
-
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">確認修改</button>
-                    </form>
 
                 </div>
-            </div>
 
+                <button type="submit" class="btn btn-primary">確認修改</button>
+                </form>
+
+            </div>
         </div>
+
     </div>
+</div>
 
 
 
 </div>
-<?php include '../../parts/scripts.php' ?>
+<?php include '../parts/scripts.php' ?>
 <script>
     const checkForm = (e) => {
         e.preventDefault(); // 不要讓原來的表單送出
@@ -92,7 +79,7 @@ if (empty($r)) {
         // TODO: 欄位資料檢查
 
         const fd = new FormData(document.form1);
-        fetch('edit-orders-api.php', {
+        fetch('order-edit-api.php', {
                 method: 'POST',
                 body: fd
             })
@@ -100,7 +87,9 @@ if (empty($r)) {
             .then(obj => {
                 console.log(obj);
                 if (obj.success) {
-                    alert('修改成功');
+                    console.log('修改成功');
+                    location.href = 'order-list.php';
+
                 } else {
                     for (let k in obj.errors) {
                         const el = document.querySelector('#' + k);
@@ -114,4 +103,4 @@ if (empty($r)) {
             })
     };
 </script>
-<?php include '../../parts/html-foot.php' ?>
+<?php include '../parts/html-foot.php' ?>
