@@ -45,7 +45,7 @@
                             活動專區
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">活動新增修改</a></li>
+                            <li><a class="dropdown-item" href="./../event-page/event-list.php">活動新增修改</a></li>
                             <li><a class="dropdown-item" href="#">報名新增修改</a></li>
                         </ul>
                     </li>
