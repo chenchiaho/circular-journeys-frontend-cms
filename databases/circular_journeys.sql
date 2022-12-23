@@ -17,6 +17,27 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+-- 資料表結構 `admins`
+--
+
+CREATE TABLE `admins` (
+  `sid` int(11) NOT NULL,
+  `account_id` varchar(255) NOT NULL,
+  `password_hash` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 傾印資料表的資料 `admins`
+--
+
+INSERT INTO `admins` (`sid`, `account_id`, `password_hash`) VALUES
+(2, 'kevinLa', '$2y$10$uS4kY1gRTYj02v12uvr/SeL1HYqnLEoTdzJpM/u7V8LW4nKlthkSq'),
+(3, 'Anchor', '$2y$10$8ygdQqqGJ7mQSzE7FEoXk./N0G6XGJbYJcjPzTsxOYXQV1t3OWmsC'),
+(4, 'Circle', '$2y$10$lxNFSJhX8YZnuSzwm8pEIOjlH166vq0b8XqUsQFTpVxY.VHyif2mq'),
+(5, 'Alan', '$2y$10$m7ScZmsTplvDxbxRkYxdmunfJHbZ7F04PAUBWOBL9djX5BH.6/M0.');
+
+-- --------------------------------------------------------
+
 --
 -- 資料庫： `circular_journeys`
 --
