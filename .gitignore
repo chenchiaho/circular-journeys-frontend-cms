@@ -3,8 +3,11 @@
 /.pnp
 .pnp.js
 
+
+
 .vscode
 # hi
+
 # testing
 /coverage
 
@@ -14,7 +17,7 @@
 # images
 product-images/
 
-# misc
+# misc2
 **/.DS_Store
 .env.local
 .env.development.local
