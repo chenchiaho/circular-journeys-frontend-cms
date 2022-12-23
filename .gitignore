@@ -10,7 +10,7 @@
 /build
 
 # images
-/marketplace-page/product-images
+product-images/
 
 # misc
 **/.DS_Store
