@@ -15,7 +15,7 @@ $pdo->query($sql);
 if (empty($_SERVER['HTTP_REFERER'])) {
   $come_from = 'user-list.php';
 } else {
-  $come_from = $_SERVER['HTTP_REFERER']; // 從哪裡來, 回哪裡去
+  $come_from = $_SERVER['HTTP_REFERER'];
 }
 
 header("Location: $come_from");
