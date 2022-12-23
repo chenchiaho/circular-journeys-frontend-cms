@@ -1,4 +1,5 @@
 <?php
+require 'admin-required.php';
 require '../parts/connect_db.php';
 $pageName = 'list';
 $title = "資料列表";
