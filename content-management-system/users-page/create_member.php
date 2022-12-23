@@ -148,7 +148,7 @@ $title = "新增會員";
                     <input type="date" class="form-control" id="expiry" name="expiry" value="">
                     <div class="form-text"></div>
                 </div>
-                <button type="submit" class="btn btn-success">新增</button>
+                <button type="submit" class="btn btn-primary">新增</button>
                 <button onclick="window.location='user-list.php'" type="button" class="btn btn-danger">返回</button>
             </form>
         </div>

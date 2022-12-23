@@ -3,7 +3,11 @@
 /.pnp
 .pnp.js
 
-# hi 33
+
+
+.vscode
+# hi
+
 # testing
 /coverage
 
