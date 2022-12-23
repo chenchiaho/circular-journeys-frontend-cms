@@ -3,7 +3,7 @@
 /.pnp
 .pnp.js
 
-# hi
+# hi 33
 # testing
 /coverage
 
@@ -13,7 +13,7 @@
 # images
 product-images/
 
-# misc
+# misc2
 **/.DS_Store
 .env.local
 .env.development.local
