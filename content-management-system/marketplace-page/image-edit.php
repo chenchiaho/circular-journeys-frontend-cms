@@ -115,7 +115,8 @@ if (empty($r)) {
                             el.nextElementSibling.innerHTML = obj.errors[k];
                         }
                     }
-                    alert('資料沒有修改');
+                    console.log('資料沒有修改');
+
                 }
             })
     };
