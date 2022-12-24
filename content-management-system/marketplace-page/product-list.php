@@ -2,7 +2,7 @@
 require 'admin-required.php';
 require '../parts/connect_db.php';
 $pageName = 'product list';
-$title = "商品管理2";
+$title = "商品管理";
 
 $perPage = 20;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -39,13 +39,17 @@ if (!empty($totalRows)) {
 ?>
 <?php include '../parts/html-head.php' ?>
 <?php include '../parts/navbar.php' ?>
+<br>
+<br>
+<br>
+
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col" style="display:flex; justify-content: space-between;">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
-                        <a class="page-link" href="?page=<?= $page - 1 ?>"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                        <a class="page-link" href="?page=<?= $page - 1 ?>"><i class="fa-solid fa-angle-left"></i></a>
                     </li>
 
                     <?php for ($i = $page - 5; $i <= $page + 5; $i++) :
@@ -58,10 +62,13 @@ if (!empty($totalRows)) {
                     endfor; ?>
 
                     <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>">
-                        <a class="page-link" href="?page=<?= $page + 1 ?>"><i class="fa-solid fa-circle-arrow-right"></i></a>
+                        <a class="page-link" href="?page=<?= $page + 1 ?>"><i class="fa-solid fa-angle-right"></i></a>
                     </li>
                 </ul>
             </nav>
+            <a href="product-add.php" style="padding-right: 43px;">
+                <i class="fa-solid fa-file-circle-plus fa-2x"></i>
+            </a>
         </div>
     </div>
     <div class="row">
@@ -80,7 +87,7 @@ if (!empty($totalRows)) {
                         <th scope="col">商品狀態</th>
                         <th scope="col">創建日期</th>
                         <th scope="col">更新日期</th>
-                        <th scope="col"><i class="fa-solid fa-plus"></i></th>
+
                         <th scope="col"><i class="fa-solid fa-file-pen"></i></th>
                         <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
                     </tr>
@@ -109,12 +116,7 @@ if (!empty($totalRows)) {
                             <td><?= $r['active_status'] ?></td>
                             <td><?= $r['created_at'] ?></td>
                             <td><?= $r['modified_at'] ?></td>
-                            <td>
 
-                                <a href="product-add.php">
-                                    <i class="fa-solid fa-plus"></i>
-                                </a>
-                            </td>
                             <td>
                                 <a href="product-edit.php?id=<?= $r['id'] ?>">
                                     <i class="fa-solid fa-file-pen"></i>

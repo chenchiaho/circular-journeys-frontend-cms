@@ -45,10 +45,16 @@ if (empty($r)) {
 
                         </div>
                         <br>
+                        <div>
+                            <img src="" alt="" id="myimg" width="120">
+                        </div>
+                        <br>
                         <button type="submit" name="submit" value="Upload Image" class="btn btn-primary">確認更新</button>
 
 
                     </form>
+
+
 
                 </div>
             </div>
@@ -61,6 +67,22 @@ if (empty($r)) {
 </div>
 <?php include '../parts/scripts.php' ?>
 <script>
+    const f = document.form1.upload;
+    const myimg = document.querySelector('#myimg');
+
+    f.onchange = (e) => {
+        console.log(f.files); // FileList, File
+
+        const reader = new FileReader();
+        reader.onload = function() {
+            myimg.src = reader.result;
+        };
+
+        reader.readAsDataURL(f.files[0]); // 讀取檔案內容
+    };
+
+
+
     const checkForm = (e) => {
         e.preventDefault(); // 不要讓原來的表單送出
 
