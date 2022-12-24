@@ -15,7 +15,7 @@
 /build
 
 # images
-product-images/
+# product-images/
 
 # misc2
 **/.DS_Store

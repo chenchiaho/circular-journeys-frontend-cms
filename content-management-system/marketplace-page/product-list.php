@@ -110,10 +110,16 @@ if (!empty($totalRows)) {
 
                             <td><?= $r['name'] ?></td>
                             <td><?= $r['description'] ?></td>
-                            <td><?= $r['price'] ?></td>
+                            <td><?= "$" . $r['price'] ?></td>
                             <td><?= $r['inventory_id'] ?></td>
                             <td><?= $r['category_id'] ?></td>
-                            <td><?= $r['active_status'] ?></td>
+                            <td>
+                                <?php if ($r['active_status'] == 1) : ?>
+                                    <p>已上架</p>
+                                <?php else : ?>
+                                    <p>尚未上架</p>
+                                <?php endif; ?>
+                            </td>
                             <td><?= $r['created_at'] ?></td>
                             <td><?= $r['modified_at'] ?></td>
 

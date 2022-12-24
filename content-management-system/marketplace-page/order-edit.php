@@ -24,8 +24,8 @@ if (empty($r)) {
 <?php include '../parts/html-head.php' ?>
 <?php include '../parts/navbar.php' ?>
 <div class="container">
-    <div class="row">
-        <div class="col-lg-6">
+    <div class="row" style="padding-bottom: 100px;">
+        <div class="col-lg-6" style="margin: auto;">
             <div class="card">
                 <div class="card-body">
                     <br>
