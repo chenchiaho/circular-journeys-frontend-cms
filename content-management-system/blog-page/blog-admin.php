@@ -48,13 +48,13 @@ if(! empty($totalRows)){
 
                     <li class="page-item <?= $page==1 ? 'disabled' : ''?>">
                         <a class="page-link" href="?page=1">
-                            <i class="fa-solid fa-backward-step"></i>
+                            <i class="fa-solid fa-angles-left"></i>
                         </a>
                     </li>
 
                     <li class="page-item <?= $page==1 ? 'disabled' : ''?>">
                         <a class="page-link" href="?page=<?= $page-1 ?>">
-                            <i class="fa-solid fa-circle-arrow-left"></i>
+                            <i class="fa-solid fa-angle-left"></i>
                         </a>
                     </li>
 
@@ -68,13 +68,13 @@ if(! empty($totalRows)){
 
                     <li class="page-item <?= $page==$totalPages ? 'disabled' : ''?>">
                         <a class="page-link" href="?page=<?= $page+1 ?>">
-                            <i class="fa-solid fa-circle-arrow-right"></i>
+                            <i class="fa-solid fa-angle-right"></i>
                         </a>
                     </li>
 
                     <li class="page-item <?= $page==$totalPages ? 'disabled' : ''?>">
                         <a class="page-link" href="?page=<?= $totalPages ?>">
-                            <i class="fa-solid fa-forward-step"></i>
+                            <i class="fa-solid fa-angles-right"></i>
                         </a>
                     </li>
                 </ul>
