@@ -91,9 +91,9 @@ if(empty($r)){
             method: 'POST',
             body: fd
         })
-        .then(r=> r.text())
+        .then(r=> r.json())
         .then(obj=>{
-            console.log(obj);
+            // console.log(obj);
             if(obj.success){
                 alert('修改成功');
             }else{

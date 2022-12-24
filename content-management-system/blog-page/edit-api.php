@@ -48,7 +48,7 @@ if(mb_strlen($_POST['post_content']) < 2){
 $sql = "UPDATE `post` SET 
         `modified_date`=NOW(),
         `post_title`=?,
-        `post_content`=?, WHERE `post_id`=?";
+        `post_content`=? WHERE `post_id`=?";
 
 $stmt = $pdo -> prepare($sql);
 
