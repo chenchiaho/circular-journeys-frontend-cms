@@ -8,6 +8,7 @@ $title = "活動新增修改";
 ?>
 <?php include '../parts/html-head.php' ?>
 <?php include '../parts/navbar.php' ?>
+<?php date_default_timezone_set("Taiwan/Taipei") ?>
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
@@ -22,30 +23,22 @@ $title = "活動新增修改";
                         </div>
 
                         <div class="mb-3">
-                            <label for="email" class="form-label">email</label>
-                            <input type="email" class="form-control" id="email" name="email">
+                            <label for="image" class="form-label">image</label>
+                            <input type="text" class="form-control" id="image" name="image">
                             <div class="form-text"></div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="mobile" class="form-label">mobile</label>
-                            <input type="number" class="form-control" id="mobile" name="mobile" pattern="09\d{2}-?\d{3}-?\d{3}">
+                            <label for="description" class="form-label">description</label>
+                            <input type="text" class="form-control" id="description" name="description" required>
                             <div class="form-text"></div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="birthday" class="form-label">birthday</label>
-                            <input type="date" class="form-control" id="birthday" name="birthday">
+                            <label for="created_at" class="form-label">創建日期</label>
+                            <input type="text" disabled="disabled" class="form-control" id="created_at" name="created_at">
                             <div class="form-text"></div>
                         </div>
-
-                        <div class="mb-3">
-                            <label for="address" class="form-label">address</label>
-
-                            <textarea class="form-control" name="address" id="address" cols="30" rows="3"></textarea>
-                            <div class="form-text"></div>
-                        </div>
-
 
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -61,7 +54,26 @@ $title = "活動新增修改";
 </div>
 <?php include '../parts/scripts.php' ?>
 <script>
-    /*
+    //持續更新時間function
+
+    setInterval(function() {
+        document.getElementById("created_at").value = formatDate(new Date());
+    }, 1000);
+    //編輯顯示時間的格式
+    function formatDate(date) {
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1; // 0-based
+        var day = date.getDate();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        return year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
+    }
+
+
+
+
+
     function validateEmail(email) {
         var re =
             /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zAZ]{2,}))$/;
@@ -89,37 +101,36 @@ $title = "活動新增修改";
         if (field.value.length < 2) {
             isPass = false;
             field.style.border = '2px solid red';
-            field.nextElementSibling.innerHTML = '請輸入正確的名字';
+            field.nextElementSibling.innerHTML = '請輸入合法名字';
         }
-
+        /*
         field = document.form1.email; // 當前要檢查的欄位
         if (!validateEmail(field.value)) {
             isPass = false;
             field.style.border = '2px solid red';
             field.nextElementSibling.innerHTML = '請輸入正確的 Email';
         }
-
+        */
 
         if (!isPass) {
             return; // 沒有通過檢查就結束, 不發 AJAX request
         }
         const fd = new FormData(document.form1);
 
-*/
 
-    /*
-        fetch('add-api.php', {
-          method: 'POST',
-          body: fd
-        }).then(function(response){
-          return response.json()
-        }).then(obj=>{
-          console.log(obj);
-        })
-    */
+        /*
+                fetch('add-api.php', {
+                    method: 'POST',
+                    body: fd
+                }).then(function(response) {
+                    return response.json()
+                }).then(obj => {
+                    console.log(obj);
+                })
+
+        */
 
 
-    /*
         fetch('add-api.php', {
                 method: 'POST',
                 body: fd
@@ -140,7 +151,7 @@ $title = "活動新增修改";
                 }
             })
     };
-    */
+
     /*
     取得頁面上的所有表單
       document.forms
@@ -154,4 +165,4 @@ $title = "活動新增修改";
       document.form1.elements['mobile']
     */
 </script>
-<?php include '..html-foot.php' ?>
+<?php include '../parts/html-foot.php' ?>
