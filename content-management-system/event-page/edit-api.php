@@ -1,6 +1,9 @@
 <?php
 // require './admin-required-api.php';
 require '../parts/connect_db.php';
+
+
+date_default_timezone_set("Asia/Taipei");
 header('Content-Type: application/json');
 
 $output = [
@@ -11,24 +14,23 @@ $output = [
 ];
 
 
-
-$id = $_POST['id'] ?? '';
+$id = $r['id'] ?? '';
 $name = $_POST['name'] ?? '';
 $image = $_POST['image'] ?? '';
 $description = $_POST['description'] ?? '';
-$created_at = $_POST['created_at'] ?? '';
-$modified_at = $_POST['modified_at'] ?? '';
-
+$created_at  = $_POST['created_at'] ?? '';
 
 $sql = "UPDATE `events_menu` SET 
 `name`=?,
 `image`=?,
 `description`=?,
 `created_at`=?,
-`modified_at`=? 
+`modified_at`= ?
 WHERE `id` =?";
 
+
 $stmt = $pdo->prepare($sql);
+$modified_at  = date("Y-m-d H:i:s");
 
 $stmt->execute([
     $name,

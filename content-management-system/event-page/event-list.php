@@ -46,9 +46,8 @@ if (!empty($totalRows)) {
     <div class="col ">
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-                <li>
-                    <a class="btn btn-dark" href="#" role="button">Create</a>
-                </li>
+                <a class="btn btn-dark" href="../event-page/add.php" role="button">Create</a>
+
                 <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
                     <a class="page-link" href="?page=<?= $page - 1 ?>"><i class="fa-solid fa-circle-arrow-left"></i></a>
                 </li>
@@ -89,7 +88,7 @@ if (!empty($totalRows)) {
                 <?php foreach ($rows as $r) : ?>
                     <tr>
                         <td class="text-nowrap"><?= $r['id'] ?></td>
-                        <td class="text-nowrap"><?= $r['name'] ?></td>
+                        <td class="text-break"><?= $r['name'] ?></td>
                         <td class="text-break"><?= $r['image'] ?></td>
                         <td class="text-break"><?= $r['description'] ?></td>
                         <td class="text-nowrap"><?= $r['created_at'] ?></td>

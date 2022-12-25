@@ -60,7 +60,7 @@ if (empty($r)) {
 
                             <div class="mb-3">
                                 <label for="modified_at" class="form-label">更新日期</label>
-                                <input type="text" disabled="disabled" class="form-control" name="modified_at" id="modified_at" value="<?= date("Y-m-d h:i:s") ?>"> </input>
+                                <input type="text" disabled="disabled" class="form-control" name="modified_at" id="modified_at"></input>
                                 <div class="form-text"></div>
                             </div>
                             <figure>
@@ -132,6 +132,7 @@ if (empty($r)) {
                 body: fd
             })
             .then(r => r.json())
+
             .then(obj => {
                 console.log(obj);
                 if (obj.success) {
