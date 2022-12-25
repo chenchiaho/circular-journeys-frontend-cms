@@ -11,34 +11,32 @@ $output = [
 ];
 
 
-$sid = intval($_POST['id']);
 
+$id = $_POST['id'] ?? '';
 $name = $_POST['name'] ?? '';
 $image = $_POST['image'] ?? '';
 $description = $_POST['description'] ?? '';
-$modified_at = '';
-
-// $active_status = $_POST['active_status'] ?? '';
-
+$created_at = $_POST['created_at'] ?? '';
+$modified_at = $_POST['modified_at'] ?? '';
 
 
-$sql = "UPDATE `events_menu` SET
+$sql = "UPDATE `events_menu` SET 
 `name`=?,
 `image`=?,
 `description`=?,
-`modified_at`= NOW(),
--- `active_status`=?
-WHERE `id`=?";
+`created_at`=?,
+`modified_at`=? 
+WHERE `id` =?";
 
 $stmt = $pdo->prepare($sql);
 
 $stmt->execute([
     $name,
-    $img,
+    $image,
     $description,
+    $created_at,
     $modified_at,
-    // $active_status,
-    // $sid
+    $id
 ]);
 
 $output['success'] = !!$stmt->rowCount();
