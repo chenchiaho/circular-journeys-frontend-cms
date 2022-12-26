@@ -1,7 +1,7 @@
 <?php
 // require './admin-required.php';
 require '../parts/connect_db.php';
-$title = "活動資訊修改";
+$title = "活動新增修改";
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
@@ -15,7 +15,7 @@ $sql = "SELECT * FROM events_menu WHERE id=$id";
 $r = $pdo->query($sql)->fetch();
 if (empty($r)) {
     // 透過編號找不到資料的話
-    header('Location: list.php');
+    header('Location: event-list.php');
     exit;
 }
 
@@ -28,12 +28,9 @@ if (empty($r)) {
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <br>
-                    <br>
-                    <br>
                     <h5 class="card-title">活動資訊修改</h5>
-                    <br>
-                    <form name="form1" onsubmit="checkForm(event)" novalidate="novalidate" action="edit-api.php">
+                    <form name="form1" novalidate="novalidate" onsubmit="checkForm(event)">
+                        <!-- action="edit-api.php" method="POST" -->
                         <input type="hidden" name="id" value="<?= $r['id'] ?>">
                         <div class="mb-3">
                             <label for="name" class="form-label">活動名稱</label>
@@ -63,7 +60,7 @@ if (empty($r)) {
 
                             <div class="mb-3">
                                 <label for="modified_at" class="form-label">更新日期</label>
-                                <input type="text" disabled="disabled" class="form-control" name="modified_at" id="modified_at" value="<?= date("Y-m-d h:i:s") ?>"> </input>
+                                <input type="text" disabled="disabled" class="form-control" name="modified_at" id="modified_at"></input>
                                 <div class="form-text"></div>
                             </div>
                             <figure>
@@ -74,6 +71,7 @@ if (empty($r)) {
                                     <cite title="Source Title">確認後無法變更!</cite></cite>
                                 </figcaption>
                             </figure>
+
                             <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="1">
                                 <label class="btn btn-outline-primary" for="btnradio1">確認修改</label>
@@ -116,7 +114,9 @@ if (empty($r)) {
     }
 
     const checkForm = (e) => {
-        e.preventDefault(); // 不要讓原來的表單送出
+
+        // 不要讓原來的表單送出
+        e.preventDefault();
 
         // 所有輸入欄回復原來的外觀
         const inputs = document.querySelectorAll("input.form-control");
@@ -127,7 +127,6 @@ if (empty($r)) {
 
 
         // TODO: 欄位資料檢查
-
         const fd = new FormData(document.form1);
         fetch('edit-api.php', {
                 method: 'POST',
@@ -137,7 +136,8 @@ if (empty($r)) {
             .then(obj => {
                 console.log(obj);
                 if (obj.success) {
-                    alert('修改成功');
+                    console.log('修改成功');
+                    location.href = 'event-list.php';
                 } else {
                     for (let k in obj.errors) {
                         const el = document.querySelector('#' + k);

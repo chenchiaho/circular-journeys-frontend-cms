@@ -1,6 +1,9 @@
 <?php
 // require './admin-required-api.php';
 require '../parts/connect_db.php';
+
+
+date_default_timezone_set("Asia/Taipei");
 header('Content-Type: application/json');
 
 $output = [
@@ -9,39 +12,31 @@ $output = [
     'code' => 0,
     'errors' => []
 ];
-
-
-$sid = intval($_POST['id']);
-
+$id = $_POST['id'] ?? '';
 $name = $_POST['name'] ?? '';
 $image = $_POST['image'] ?? '';
 $description = $_POST['description'] ?? '';
-$modified_at = '';
+// $btnradio = $_POST['btnradio'] ?? '';
 
-// $active_status = $_POST['active_status'] ?? '';
-
-
-
-$sql = "UPDATE `events_menu` SET
-`name`=?,
-`image`=?,
-`description`=?,
-`modified_at`= NOW(),
--- `active_status`=?
-WHERE `id`=?";
+$sql = "UPDATE `events_menu`SET
+ `name`= ?,
+ `image`= ?,
+ `description`= ?, 
+ `modified_at`= NOW()
+WHERE `id` = ?";
 
 $stmt = $pdo->prepare($sql);
 
 $stmt->execute([
     $name,
-    $img,
+    $image,
     $description,
-    $modified_at,
-    // $active_status,
-    // $sid
+    $id
 ]);
-
 $output['success'] = !!$stmt->rowCount();
+// if ($btnradio == 1) {
+// }
+
 
 
 

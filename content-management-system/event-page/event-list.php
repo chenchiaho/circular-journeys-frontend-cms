@@ -37,73 +37,79 @@ if (!empty($totalRows)) {
 
 ?>
 <?php include '../parts/html-head.php' ?>
-<?php include '../parts/navbar.php' ?>
+<?php include '../parts/navbar.php'  ?>
+<br>
+<br>
+<br>
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
-                        <a class="page-link" href="?page=<?= $page - 1 ?>"><i class="fa-solid fa-circle-arrow-left"></i></a>
-                    </li>
+    <div class="row"></div>
+    <div class="col ">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <a class="btn btn-dark" href="../event-page/add.php" role="button">Create</a>
 
-                    <?php for ($i = $page - 5; $i <= $page + 5; $i++) :
-                        if ($i >= 1 and $i <= $totalPages) :
-                    ?>
-                            <li class="page-item <?= $i == $page ? 'active' : '' ?> ">
-                                <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
-                            </li>
-                    <?php endif;
-                    endfor; ?>
+                <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
+                    <a class="page-link" href="?page=<?= $page - 1 ?>"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                </li>
 
-                    <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>">
-                        <a class="page-link" href="?page=<?= $page + 1 ?>"><i class="fa-solid fa-circle-arrow-right"></i></a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+                <?php for ($i = $page - 5; $i <= $page + 5; $i++) :
+                    if ($i >= 1 and $i <= $totalPages) :
+                ?>
+                        <li class="page-item <?= $i == $page ? 'active' : '' ?> ">
+                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                        </li>
+                <?php endif;
+                endfor; ?>
+
+                <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>">
+                    <a class="page-link" href="?page=<?= $page + 1 ?>"><i class="fa-solid fa-circle-arrow-right"></i></a>
+                </li>
+            </ul>
+        </nav>
     </div>
-    <div class="row">
-        <div class="col-9">
-            <table class="table table-hover table-bordered ">
-                <thead class="text-nowrap  table-dark">
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-9">
+        <table class="table table-hover table-bordered ">
+            <thead class="text-nowrap  table-dark">
+                <tr>
+                    <th scope="col">活動代碼</th>
+                    <th scope="col">活動名稱</th>
+                    <th scope="col">圖片</th>
+                    <th scope="col">活動簡介</th>
+                    <th scope="col">創建日期</th>
+                    <th scope="col">更新日期</th>
+                    <th scope="col"><i class="fa-solid fa-file-pen"></i></th>
+                    <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
+                </tr>
+            </thead>
+            <tbody">
+                <?php foreach ($rows as $r) : ?>
                     <tr>
-                        <th scope="col">活動代碼</th>
-                        <th scope="col">活動名稱</th>
-                        <th scope="col">圖片</th>
-                        <th scope="col">活動簡介</th>
-                        <th scope="col">創建日期</th>
-                        <th scope="col">更新日期</th>
-                        <th scope="col"><i class="fa-solid fa-file-pen"></i></th>
-                        <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
+                        <td class="text-nowrap"><?= $r['id'] ?></td>
+                        <td class="text-break"><?= $r['name'] ?></td>
+                        <td class="text-break"><?= $r['image'] ?></td>
+                        <td class="text-break"><?= $r['description'] ?></td>
+                        <td class="text-nowrap"><?= $r['created_at'] ?></td>
+                        <td class="text-nowrap"><?= $r['modified_at'] ?></td>
+                        <td>
+                            <a href="edit.php?id=<?= $r['id'] ?>">
+                                <i class="fa-solid fa-file-pen"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="javascript: delete_it(<?= $r['id'] ?>)">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
                     </tr>
-                </thead>
-                <tbody">
-                    <?php foreach ($rows as $r) : ?>
-                        <tr>
-                            <td class="text-nowrap"><?= $r['id'] ?></td>
-                            <td class="text-nowrap"><?= $r['name'] ?></td>
-                            <td class="text-break"><?= $r['image'] ?></td>
-                            <td class="text-break"><?= $r['description'] ?></td>
-                            <td class="text-nowrap"><?= $r['created_at'] ?></td>
-                            <td class="text-nowrap"><?= $r['modified_at'] ?></td>
-                            <td>
-                                <a href="edit.php?id=<?= $r['id'] ?>">
-                                    <i class="fa-solid fa-file-pen"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="javascript: delete_it(<?= $r['id'] ?>)">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    <?php endforeach ?>
-                    </tbody>
-            </table>
+                <?php endforeach ?>
+                </tbody>
+        </table>
 
-        </div>
     </div>
+</div>
 </div>
 <?php include '../parts/scripts.php' ?>
 <script>
