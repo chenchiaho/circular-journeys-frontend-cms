@@ -48,13 +48,13 @@ if(! empty($totalRows)){
 
                     <li class="page-item <?= $page==1 ? 'disabled' : ''?>">
                         <a class="page-link" href="?page=1">
-                            <i class="fa-solid fa-backward-step"></i>
+                            <i class="fa-solid fa-angles-left"></i>
                         </a>
                     </li>
 
                     <li class="page-item <?= $page==1 ? 'disabled' : ''?>">
                         <a class="page-link" href="?page=<?= $page-1 ?>">
-                            <i class="fa-solid fa-circle-arrow-left"></i>
+                            <i class="fa-solid fa-angle-left"></i>
                         </a>
                     </li>
 
@@ -68,13 +68,13 @@ if(! empty($totalRows)){
 
                     <li class="page-item <?= $page==$totalPages ? 'disabled' : ''?>">
                         <a class="page-link" href="?page=<?= $page+1 ?>">
-                            <i class="fa-solid fa-circle-arrow-right"></i>
+                            <i class="fa-solid fa-angle-right"></i>
                         </a>
                     </li>
 
                     <li class="page-item <?= $page==$totalPages ? 'disabled' : ''?>">
                         <a class="page-link" href="?page=<?= $totalPages ?>">
-                            <i class="fa-solid fa-forward-step"></i>
+                            <i class="fa-solid fa-angles-right"></i>
                         </a>
                     </li>
                 </ul>
@@ -92,6 +92,7 @@ if(! empty($totalRows)){
                         <th scope="col">文章標題</th>
                         <th scope="col">文章內文</th>
                         <th scope="col">創建日期</th>
+                        <th scope="col">修改日期</th>
                         <th scope="col">檢舉</th>
                         <th scope="col">修改</th>
                         <th scope="col">刪除</th>
@@ -105,10 +106,10 @@ if(! empty($totalRows)){
                             <td><?= htmlentities($r['post_title']) ?></td>
                             <td><?= htmlentities($r['post_content']) ?></td>
                             <td><?= $r['created_date'] ?></td>
+                            <td><?= $r['modified_date'] ?></td>
                             <td><?= $r['is_reported'] ?></td>
                             <td>
-                                <!-- <a href="edit.php?post_id=<?= $r['post_id'] ?>"> -->
-                                <a href="javascript: ">
+                                <a href="blog-edit.php?post_id=<?= $r['post_id'] ?>">
                                     <i class="fa-solid fa-file-pen"></i>
                                 </a>
                             </td>
