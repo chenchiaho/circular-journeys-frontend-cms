@@ -84,8 +84,8 @@ if(! empty($totalRows)){
 
     <div class="row">
         <div class="col">
-            <table class="table table-striped table-bordered">
-                <thead>
+            <table class="table table-bordered table-hover ">
+                <thead class="table-dark">
                     <tr>
                         <th scope="col">會員編號</th>
                         <th scope="col">文章編號</th>
