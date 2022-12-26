@@ -8,7 +8,7 @@ $title = "活動新增修改";
 ?>
 <?php include '../parts/html-head.php' ?>
 <?php include '../parts/navbar.php' ?>
-<?php date_default_timezone_set("Taiwan/Taipei") ?>
+<?php date_default_timezone_set("Asia/Taipei"); ?>
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
@@ -140,6 +140,7 @@ $title = "活動新增修改";
                 console.log(obj);
                 if (obj.success) {
                     alert('新增成功');
+                    location.href = 'event-list.php';
                 } else {
                     for (let k in obj.errors) {
                         const el = document.querySelector('#' + k);

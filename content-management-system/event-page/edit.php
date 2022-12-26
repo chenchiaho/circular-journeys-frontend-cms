@@ -71,6 +71,7 @@ if (empty($r)) {
                                     <cite title="Source Title">確認後無法變更!</cite></cite>
                                 </figcaption>
                             </figure>
+
                             <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="1">
                                 <label class="btn btn-outline-primary" for="btnradio1">確認修改</label>
@@ -132,7 +133,6 @@ if (empty($r)) {
                 body: fd
             })
             .then(r => r.json())
-
             .then(obj => {
                 console.log(obj);
                 if (obj.success) {

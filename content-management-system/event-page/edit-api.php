@@ -12,36 +12,31 @@ $output = [
     'code' => 0,
     'errors' => []
 ];
-
-
-$id = $r['id'] ?? '';
+$id = $_POST['id'] ?? '';
 $name = $_POST['name'] ?? '';
 $image = $_POST['image'] ?? '';
 $description = $_POST['description'] ?? '';
-$created_at  = $_POST['created_at'] ?? '';
+// $btnradio = $_POST['btnradio'] ?? '';
 
-$sql = "UPDATE `events_menu` SET 
-`name`=?,
-`image`=?,
-`description`=?,
-`created_at`=?,
-`modified_at`= ?
-WHERE `id` =?";
-
+$sql = "UPDATE `events_menu`SET
+ `name`= ?,
+ `image`= ?,
+ `description`= ?, 
+ `modified_at`= NOW()
+WHERE `id` = ?";
 
 $stmt = $pdo->prepare($sql);
-$modified_at  = date("Y-m-d H:i:s");
 
 $stmt->execute([
     $name,
     $image,
     $description,
-    $created_at,
-    $modified_at,
     $id
 ]);
-
 $output['success'] = !!$stmt->rowCount();
+// if ($btnradio == 1) {
+// }
+
 
 
 
