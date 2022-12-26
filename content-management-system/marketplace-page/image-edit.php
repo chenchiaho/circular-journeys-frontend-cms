@@ -23,14 +23,15 @@ if (empty($r)) {
 
 <?php include '../parts/html-head.php' ?>
 <?php include '../parts/navbar.php' ?>
+<br>
+<br>
+<br>
 <div class="container">
-    <div class="row">
-        <div class="col-lg-6">
+    <div class="row" style="padding-bottom: 100px;">
+        <div class="col-lg-6" style="margin: auto;">
             <div class="card">
                 <div class="card-body">
-                    <br>
-                    <br>
-                    <br>
+
                     <h5 class="card-title">圖片修改</h5>
                     <br>
                     <form name="form1" onsubmit="checkForm(event)" novalidate>
@@ -45,10 +46,19 @@ if (empty($r)) {
 
                         </div>
                         <br>
-                        <button type="submit" name="submit" value="Upload Image" class="btn btn-primary">確認更新</button>
+                        <div>
+                            <img src="" alt="" id="myimg" width="120" style="display: block;
+                                margin-left: auto;
+                                margin-right: auto;
+                                width: 50%;">
+                        </div>
+                        <br>
+                        <button type="submit" name="submit" value="Upload Image" class="btn btn-primary" style="width: 100%;">確認更新</button>
 
 
                     </form>
+
+
 
                 </div>
             </div>
@@ -61,6 +71,22 @@ if (empty($r)) {
 </div>
 <?php include '../parts/scripts.php' ?>
 <script>
+    const f = document.form1.upload;
+    const myimg = document.querySelector('#myimg');
+
+    f.onchange = (e) => {
+        console.log(f.files); // FileList, File
+
+        const reader = new FileReader();
+        reader.onload = function() {
+            myimg.src = reader.result;
+        };
+
+        reader.readAsDataURL(f.files[0]); // 讀取檔案內容
+    };
+
+
+
     const checkForm = (e) => {
         e.preventDefault(); // 不要讓原來的表單送出
 
@@ -93,7 +119,8 @@ if (empty($r)) {
                             el.nextElementSibling.innerHTML = obj.errors[k];
                         }
                     }
-                    alert('資料沒有修改');
+                    console.log('資料沒有修改');
+
                 }
             })
     };

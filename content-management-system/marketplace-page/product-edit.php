@@ -23,14 +23,15 @@ if (empty($r)) {
 
 <?php include '../parts/html-head.php' ?>
 <?php include '../parts/navbar.php' ?>
+<br>
+<br>
+<br>
 <div class="container">
-    <div class="row">
-        <div class="col-lg-6">
+    <div class="row" style="padding-bottom: 100px;">
+        <div class=" col-lg-6" style="margin: auto;">
             <div class="card">
                 <div class="card-body">
-                    <br>
-                    <br>
-                    <br>
+
                     <h5 class="card-title">商品資訊修改</h5>
                     <br>
                     <form name="form1" onsubmit="checkForm(event)" novalidate>
@@ -54,30 +55,30 @@ if (empty($r)) {
                             <div class=" form-text">
                             </div>
 
-
-                            <div class="mb-3">
-                                <label for="inventory" class="form-label">庫存</label>
-                                <input type="number" class="form-control" id="inventory" name="inventory" value="<?= $r['inventory_id'] ?>">
-                                <div class="form-text"></div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="category" class="form-label">商品分類</label>
-                                <input type="text" class="form-control" name="category" id="category" value="<?= htmlentities($r['category_id']) ?>"> </input>
-                                <div class="form-text"></div>
-                            </div>
-
-                            <div class="mb-3">
-
-                                <label for="active_status" class="form-label">是否已上架?</label>
-                                <input type="checkbox" id="active_status" name="active_status" value="1" <?php if ($r['active_status'] == 1) : ?> checked <?php else : ?> unchecked> <?php endif; ?>
-
-
-                            </div>
-
+                        </div>
+                        <div class="mb-3">
+                            <label for="inventory" class="form-label">庫存</label>
+                            <input type="number" class="form-control" id="inventory" name="inventory" value="<?= $r['inventory_id'] ?>">
+                            <div class="form-text"></div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">確認修改</button>
+                        <div class="mb-3">
+                            <label for="category" class="form-label">商品分類</label>
+                            <input type="text" class="form-control" name="category" id="category" value="<?= htmlentities($r['category_id']) ?>"> </input>
+                            <div class="form-text"></div>
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label for="active_status" class="form-label">是否已上架?</label>
+                            <input type="checkbox" id="active_status" name="active_status" value="1" <?php if ($r['active_status'] == 1) : ?> checked <?php else : ?> unchecked> <?php endif; ?>
+
+
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">確認修改</button>
+
+
+
                     </form>
 
                 </div>
@@ -123,7 +124,8 @@ if (empty($r)) {
                             el.nextElementSibling.innerHTML = obj.errors[k];
                         }
                     }
-                    alert('資料沒有修改');
+                    console.log('資料沒有修改');
+                    location.href = 'product-list.php';
                 }
             })
     };
