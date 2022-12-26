@@ -13,6 +13,7 @@ $output = [
 
 $sid = intval($_POST['id']);
 
+
 $name = $_POST['name'] ?? '';
 $description = $_POST['description'] ?? '';
 $price = $_POST['price'] ?? '';

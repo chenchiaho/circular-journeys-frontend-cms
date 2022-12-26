@@ -11,11 +11,11 @@
 # testing
 /coverage
 
-# production
+# production2
 /build
 
 # images
-product-images/
+# product-images/
 
 # misc2
 **/.DS_Store
