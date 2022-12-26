@@ -65,7 +65,10 @@ $title = "新增商品";
 
                             <br>
 
-                            <img src="" alt="" id="myimg" width="120">
+                            <img src="" alt="" id="myimg" width="120" style="display: block;
+                                margin-left: auto;
+                                margin-right: auto;
+                                width: 50%;">
 
 
                         </div>
